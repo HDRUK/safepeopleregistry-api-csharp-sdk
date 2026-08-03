@@ -1,0 +1,57 @@
+# SafePeopleRegistryApiSdk.Model.Organisation
+Organisation model
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **int** | Model primary key | [optional] 
+**CreatedAt** | **string** |  | [optional] 
+**UpdatedAt** | **string** |  | [optional] 
+**OrganisationName** | **string** |  | [optional] 
+**Address1** | **string** |  | [optional] 
+**Address2** | **string** |  | [optional] 
+**Town** | **string** |  | [optional] 
+**County** | **string** |  | [optional] 
+**Country** | **string** |  | [optional] 
+**Postcode** | **string** |  | [optional] 
+**LeadApplicantOrganisationName** | **string** |  | [optional] 
+**LeadApplicantEmail** | **string** |  | [optional] 
+**OrganisationUniqueId** | **string** |  | [optional] 
+**ApplicantNames** | **string** |  | [optional] 
+**FundersAndSponsors** | **string** |  | [optional] 
+**SubLicenseArrangements** | **string** |  | [optional] 
+**Verified** | **bool** |  | [optional] 
+**DsptkOdsCode** | **string** |  | [optional] 
+**DsptkCertified** | **bool** |  | [optional] 
+**DsptkExpiryDate** | **string** |  | [optional] 
+**Iso27001Certified** | **bool** |  | [optional] 
+**Iso27001CertificationNum** | **string** |  | [optional] 
+**IsoExpiryDate** | **string** |  | [optional] 
+**CeCertified** | **bool** |  | [optional] 
+**CeCertificationNum** | **string** |  | [optional] 
+**CeExpiryDate** | **string** |  | [optional] 
+**CePlusCertified** | **bool** |  | [optional] 
+**CePlusCertificationNum** | **string** |  | [optional] 
+**CePlusExpiryDate** | **string** |  | [optional] 
+**IdvtResult** | **int** |  | [optional] 
+**IdvtResultPerc** | **int** |  | [optional] 
+**IdvtErrors** | **string** |  | [optional] 
+**IdvtCompletedAt** | **string** |  | [optional] 
+**CompaniesHouseNo** | **string** |  | [optional] 
+**SectorId** | **int** |  | [optional] 
+**RorId** | **string** | ROR.org identification for Research Organisations | [optional] 
+**Website** | **string** |  | [optional] 
+**SmbStatus** | **bool** | Declaration of small/medium business | [optional] 
+**OrganisationSize** | **int** | Organisation size. Integer denotes list index rather than absolute value | [optional] 
+**Unclaimed** | **bool** | Unclaimed | [optional] 
+**SystemApproved** | **bool** | Whether this Organisation has been approved to use the system or not | [optional] 
+**OdsId** | **string** |  | [optional] 
+**DsptkStatus** | **string** |  | [optional] 
+**DsptkDateLastPublished** | **string** |  | [optional] 
+**IcoRegistrationId** | **string** |  | [optional] 
+**IcoDateRegistered** | **string** |  | [optional] 
+**IcoExpiryDate** | **string** |  | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+
