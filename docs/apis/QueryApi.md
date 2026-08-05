@@ -8,11 +8,11 @@ All URIs are relative to *http://localhost*
 
 <a id="queryquery"></a>
 # **QueryQuery**
-> QueryQuery200Response QueryQuery (string xClientId, QueryQueryRequest queryQueryRequest)
+> QueryQuery200Response QueryQuery (string xClientId, string xSignature, QueryQueryRequest queryQueryRequest)
 
 Query@query
 
-Query the registry by Digital Identifier
+Query the registry by Digital Identifier. Authenticated via x-client-id/x-signature headers (Custodian client credential + HMAC-signed payload), not a bearer token.
 
 
 ### Parameters
@@ -20,6 +20,7 @@ Query the registry by Digital Identifier
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xClientId** | **string** | Custodian client ID used to authenticate the requesting custodian |  |
+| **xSignature** | **string** | HMAC signature of the raw request body, signed with the custodian&#39;s unique identifier |  |
 | **queryQueryRequest** | [**QueryQueryRequest**](QueryQueryRequest.md) | Query definition |  |
 
 ### Return type

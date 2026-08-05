@@ -61,53 +61,5 @@ namespace SafePeopleRegistryApiSdk.Test.Api
             var model = response.Created();
             Assert.IsType<CustodianUserBulkStore201Response>(model);
         }
-
-        /// <summary>
-        /// Test CustodianUserDestroy
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task CustodianUserDestroyAsyncTest()
-        {
-            int id = default!;
-            var response = await _instance.CustodianUserDestroyAsync(id);
-            var model = response.BadRequest();
-            Assert.IsType<AccreditationIndexByRegistryId400Response>(model);
-        }
-
-        /// <summary>
-        /// Test CustodianUserShow
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task CustodianUserShowAsyncTest()
-        {
-            int id = default!;
-            var response = await _instance.CustodianUserShowAsync(id);
-            var model = response.Ok();
-            Assert.IsType<CustodianUserShow200Response>(model);
-        }
-
-        /// <summary>
-        /// Test CustodianUserStore
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task CustodianUserStoreAsyncTest()
-        {
-            CustodianUser custodianUser = default!;
-            var response = await _instance.CustodianUserStoreAsync(custodianUser);
-            var model = response.NotFound();
-            Assert.IsType<AffiliationsIndexByRegistryId404Response>(model);
-        }
-
-        /// <summary>
-        /// Test CustodianUserUpdate
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task CustodianUserUpdateAsyncTest()
-        {
-            CustodianUser custodianUser = default!;
-            var response = await _instance.CustodianUserUpdateAsync(custodianUser);
-            var model = response.NotFound();
-            Assert.IsType<AffiliationsIndexByRegistryId404Response>(model);
-        }
     }
 }

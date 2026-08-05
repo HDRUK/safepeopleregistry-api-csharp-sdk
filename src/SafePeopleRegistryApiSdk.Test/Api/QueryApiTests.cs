@@ -57,8 +57,9 @@ namespace SafePeopleRegistryApiSdk.Test.Api
         public async Task QueryQueryAsyncTest()
         {
             string xClientId = default!;
+            string xSignature = default!;
             QueryQueryRequest queryQueryRequest = default!;
-            var response = await _instance.QueryQueryAsync(xClientId, queryQueryRequest);
+            var response = await _instance.QueryQueryAsync(xClientId, xSignature, queryQueryRequest);
             var model = response.Unauthorized();
             Assert.IsType<QueryQuery401Response>(model);
         }

@@ -42,32 +42,34 @@ namespace SafePeopleRegistryApiSdk.Api
         /// Query@query
         /// </summary>
         /// <remarks>
-        /// Query the registry by Digital Identifier
+        /// Query the registry by Digital Identifier. Authenticated via x-client-id/x-signature headers (Custodian client credential + HMAC-signed payload), not a bearer token.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="xClientId">Custodian client ID used to authenticate the requesting custodian</param>
+        /// <param name="xSignature">HMAC signature of the raw request body, signed with the custodian&#39;s unique identifier</param>
         /// <param name="queryQueryRequest">Query definition</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IQueryQueryApiResponse"/>&gt;</returns>
-        Task<IQueryQueryApiResponse> QueryQueryAsync(string xClientId, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default);
+        Task<IQueryQueryApiResponse> QueryQueryAsync(string xClientId, string xSignature, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Query@query
         /// </summary>
         /// <remarks>
-        /// Query the registry by Digital Identifier
+        /// Query the registry by Digital Identifier. Authenticated via x-client-id/x-signature headers (Custodian client credential + HMAC-signed payload), not a bearer token.
         /// </remarks>
         /// <param name="xClientId">Custodian client ID used to authenticate the requesting custodian</param>
+        /// <param name="xSignature">HMAC signature of the raw request body, signed with the custodian&#39;s unique identifier</param>
         /// <param name="queryQueryRequest">Query definition</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IQueryQueryApiResponse"/>?&gt;</returns>
-        Task<IQueryQueryApiResponse?> QueryQueryOrDefaultAsync(string xClientId, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default);
+        Task<IQueryQueryApiResponse?> QueryQueryOrDefaultAsync(string xClientId, string xSignature, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
     /// The <see cref="IQueryQueryApiResponse"/>
     /// </summary>
-    public interface IQueryQueryApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IUnauthorized<SafePeopleRegistryApiSdk.Model.QueryQuery401Response?>, INotFound<SafePeopleRegistryApiSdk.Model.AffiliationsIndexByRegistryId404Response?>, IOk<SafePeopleRegistryApiSdk.Model.QueryQuery200Response?>
+    public interface IQueryQueryApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IUnauthorized<SafePeopleRegistryApiSdk.Model.QueryQuery401Response?>, INotFound<SafePeopleRegistryApiSdk.Model.FeatureIndex404Response?>, IOk<SafePeopleRegistryApiSdk.Model.QueryQuery200Response?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -148,18 +150,22 @@ namespace SafePeopleRegistryApiSdk.Api
             Events = queryApiEvents;
         }
 
-        partial void FormatQueryQuery(ref string xClientId, QueryQueryRequest queryQueryRequest);
+        partial void FormatQueryQuery(ref string xClientId, ref string xSignature, QueryQueryRequest queryQueryRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="xClientId"></param>
+        /// <param name="xSignature"></param>
         /// <param name="queryQueryRequest"></param>
         /// <returns></returns>
-        private void ValidateQueryQuery(string xClientId, QueryQueryRequest queryQueryRequest)
+        private void ValidateQueryQuery(string xClientId, string xSignature, QueryQueryRequest queryQueryRequest)
         {
             if (xClientId == null)
                 throw new ArgumentNullException(nameof(xClientId));
+
+            if (xSignature == null)
+                throw new ArgumentNullException(nameof(xSignature));
 
             if (queryQueryRequest == null)
                 throw new ArgumentNullException(nameof(queryQueryRequest));
@@ -170,11 +176,12 @@ namespace SafePeopleRegistryApiSdk.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="xClientId"></param>
+        /// <param name="xSignature"></param>
         /// <param name="queryQueryRequest"></param>
-        private void AfterQueryQueryDefaultImplementation(IQueryQueryApiResponse apiResponseLocalVar, string xClientId, QueryQueryRequest queryQueryRequest)
+        private void AfterQueryQueryDefaultImplementation(IQueryQueryApiResponse apiResponseLocalVar, string xClientId, string xSignature, QueryQueryRequest queryQueryRequest)
         {
             bool suppressDefaultLog = false;
-            AfterQueryQuery(ref suppressDefaultLog, apiResponseLocalVar, xClientId, queryQueryRequest);
+            AfterQueryQuery(ref suppressDefaultLog, apiResponseLocalVar, xClientId, xSignature, queryQueryRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -185,8 +192,9 @@ namespace SafePeopleRegistryApiSdk.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="xClientId"></param>
+        /// <param name="xSignature"></param>
         /// <param name="queryQueryRequest"></param>
-        partial void AfterQueryQuery(ref bool suppressDefaultLog, IQueryQueryApiResponse apiResponseLocalVar, string xClientId, QueryQueryRequest queryQueryRequest);
+        partial void AfterQueryQuery(ref bool suppressDefaultLog, IQueryQueryApiResponse apiResponseLocalVar, string xClientId, string xSignature, QueryQueryRequest queryQueryRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -195,11 +203,12 @@ namespace SafePeopleRegistryApiSdk.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="xClientId"></param>
+        /// <param name="xSignature"></param>
         /// <param name="queryQueryRequest"></param>
-        private void OnErrorQueryQueryDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string xClientId, QueryQueryRequest queryQueryRequest)
+        private void OnErrorQueryQueryDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string xClientId, string xSignature, QueryQueryRequest queryQueryRequest)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorQueryQuery(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, xClientId, queryQueryRequest);
+            OnErrorQueryQuery(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, xClientId, xSignature, queryQueryRequest);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -212,21 +221,23 @@ namespace SafePeopleRegistryApiSdk.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="xClientId"></param>
+        /// <param name="xSignature"></param>
         /// <param name="queryQueryRequest"></param>
-        partial void OnErrorQueryQuery(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string xClientId, QueryQueryRequest queryQueryRequest);
+        partial void OnErrorQueryQuery(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string xClientId, string xSignature, QueryQueryRequest queryQueryRequest);
 
         /// <summary>
-        /// Query@query Query the registry by Digital Identifier
+        /// Query@query Query the registry by Digital Identifier. Authenticated via x-client-id/x-signature headers (Custodian client credential + HMAC-signed payload), not a bearer token.
         /// </summary>
         /// <param name="xClientId">Custodian client ID used to authenticate the requesting custodian</param>
+        /// <param name="xSignature">HMAC signature of the raw request body, signed with the custodian&#39;s unique identifier</param>
         /// <param name="queryQueryRequest">Query definition</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IQueryQueryApiResponse"/>&gt;</returns>
-        public async Task<IQueryQueryApiResponse?> QueryQueryOrDefaultAsync(string xClientId, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IQueryQueryApiResponse?> QueryQueryOrDefaultAsync(string xClientId, string xSignature, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await QueryQueryAsync(xClientId, queryQueryRequest, cancellationToken).ConfigureAwait(false);
+                return await QueryQueryAsync(xClientId, xSignature, queryQueryRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -235,22 +246,23 @@ namespace SafePeopleRegistryApiSdk.Api
         }
 
         /// <summary>
-        /// Query@query Query the registry by Digital Identifier
+        /// Query@query Query the registry by Digital Identifier. Authenticated via x-client-id/x-signature headers (Custodian client credential + HMAC-signed payload), not a bearer token.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="xClientId">Custodian client ID used to authenticate the requesting custodian</param>
+        /// <param name="xSignature">HMAC signature of the raw request body, signed with the custodian&#39;s unique identifier</param>
         /// <param name="queryQueryRequest">Query definition</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IQueryQueryApiResponse"/>&gt;</returns>
-        public async Task<IQueryQueryApiResponse> QueryQueryAsync(string xClientId, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IQueryQueryApiResponse> QueryQueryAsync(string xClientId, string xSignature, QueryQueryRequest queryQueryRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateQueryQuery(xClientId, queryQueryRequest);
+                ValidateQueryQuery(xClientId, xSignature, queryQueryRequest);
 
-                FormatQueryQuery(ref xClientId, queryQueryRequest);
+                FormatQueryQuery(ref xClientId, ref xSignature, queryQueryRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -273,6 +285,16 @@ namespace SafePeopleRegistryApiSdk.Api
                     else
                     {
                         httpRequestMessageLocalVar.Headers.Add("x-client-id", ClientUtils.ParameterToString(xClientId));
+                    }
+
+                    // Set client side default value of Header Param "x-signature".                    
+                    if (ClientUtils.IsContentHeader("x-signature"))
+                    {
+                        httpRequestMessageLocalVar.Content?.Headers.Add("x-signature", ClientUtils.ParameterToString(xSignature));
+                    }
+                    else
+                    {
+                        httpRequestMessageLocalVar.Headers.Add("x-signature", ClientUtils.ParameterToString(xSignature));
                     }
 
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -312,7 +334,7 @@ namespace SafePeopleRegistryApiSdk.Api
                             }
                         }
 
-                        AfterQueryQueryDefaultImplementation(apiResponseLocalVar, xClientId, queryQueryRequest);
+                        AfterQueryQueryDefaultImplementation(apiResponseLocalVar, xClientId, xSignature, queryQueryRequest);
 
                         Events.ExecuteOnQueryQuery(apiResponseLocalVar);
 
@@ -322,7 +344,7 @@ namespace SafePeopleRegistryApiSdk.Api
             }
             catch(Exception e)
             {
-                OnErrorQueryQueryDefaultImplementation(e, "/api/v1/query", uriBuilderLocalVar.Path, xClientId, queryQueryRequest);
+                OnErrorQueryQueryDefaultImplementation(e, "/api/v1/query", uriBuilderLocalVar.Path, xClientId, xSignature, queryQueryRequest);
                 Events.ExecuteOnErrorQueryQuery(e);
                 throw;
             }
@@ -420,11 +442,11 @@ namespace SafePeopleRegistryApiSdk.Api
             /// Deserializes the response if the response is 404 NotFound
             /// </summary>
             /// <returns></returns>
-            public SafePeopleRegistryApiSdk.Model.AffiliationsIndexByRegistryId404Response? NotFound()
+            public SafePeopleRegistryApiSdk.Model.FeatureIndex404Response? NotFound()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsNotFound
-                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.AffiliationsIndexByRegistryId404Response>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.FeatureIndex404Response>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -433,7 +455,7 @@ namespace SafePeopleRegistryApiSdk.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryNotFound([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.AffiliationsIndexByRegistryId404Response? result)
+            public bool TryNotFound([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.FeatureIndex404Response? result)
             {
                 result = null;
 

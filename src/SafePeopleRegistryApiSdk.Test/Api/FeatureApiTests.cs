@@ -60,29 +60,5 @@ namespace SafePeopleRegistryApiSdk.Test.Api
             var model = response.Ok();
             Assert.IsType<FeatureIndex200Response>(model);
         }
-
-        /// <summary>
-        /// Test FeatureShow
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task FeatureShowAsyncTest()
-        {
-            int featureId = default!;
-            var response = await _instance.FeatureShowAsync(featureId);
-            var model = response.Ok();
-            Assert.IsType<FeatureIndex200Response>(model);
-        }
-
-        /// <summary>
-        /// Test FeatureToggleByFeatureId
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task FeatureToggleByFeatureIdAsyncTest()
-        {
-            int featureId = default!;
-            var response = await _instance.FeatureToggleByFeatureIdAsync(featureId);
-            var model = response.Ok();
-            Assert.IsType<FeatureIndex200Response>(model);
-        }
     }
 }

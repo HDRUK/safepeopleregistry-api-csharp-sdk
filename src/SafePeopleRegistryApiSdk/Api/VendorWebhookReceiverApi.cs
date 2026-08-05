@@ -67,7 +67,7 @@ namespace SafePeopleRegistryApiSdk.Api
     /// <summary>
     /// The <see cref="IVendorWebhookReceiverReceiveApiResponse"/>
     /// </summary>
-    public interface IVendorWebhookReceiverReceiveApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IOk<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive200Response?>, IBadRequest<SafePeopleRegistryApiSdk.Model.AccreditationIndexByRegistryId400Response?>, IInternalServerError<SafePeopleRegistryApiSdk.Model.ProjectHasOrganisationShow500Response?>
+    public interface IVendorWebhookReceiverReceiveApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IOk<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive200Response?>, IBadRequest<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response?>, IInternalServerError<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -258,8 +258,8 @@ namespace SafePeopleRegistryApiSdk.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/api/v1/vendor-webhooks/{provider}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/api/v1/vendor-webhooks/{provider}");
+                        ? "/api/v1/webhooks/{provider}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/api/v1/webhooks/{provider}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bprovider%7D", Uri.EscapeDataString(provider.ToString()));
 
                     httpRequestMessageLocalVar.Content = (body as object) is SafePeopleRegistryApiSdk.Client.FileParameter fileParameterLocalVar
@@ -297,7 +297,7 @@ namespace SafePeopleRegistryApiSdk.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/api/v1/vendor-webhooks/{provider}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/api/v1/webhooks/{provider}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -313,7 +313,7 @@ namespace SafePeopleRegistryApiSdk.Api
             }
             catch(Exception e)
             {
-                OnErrorVendorWebhookReceiverReceiveDefaultImplementation(e, "/api/v1/vendor-webhooks/{provider}", uriBuilderLocalVar.Path, provider, body);
+                OnErrorVendorWebhookReceiverReceiveDefaultImplementation(e, "/api/v1/webhooks/{provider}", uriBuilderLocalVar.Path, provider, body);
                 Events.ExecuteOnErrorVendorWebhookReceiverReceive(e);
                 throw;
             }
@@ -411,11 +411,11 @@ namespace SafePeopleRegistryApiSdk.Api
             /// Deserializes the response if the response is 400 BadRequest
             /// </summary>
             /// <returns></returns>
-            public SafePeopleRegistryApiSdk.Model.AccreditationIndexByRegistryId400Response? BadRequest()
+            public SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response? BadRequest()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.AccreditationIndexByRegistryId400Response>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -424,7 +424,7 @@ namespace SafePeopleRegistryApiSdk.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.AccreditationIndexByRegistryId400Response? result)
+            public bool TryBadRequest([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response? result)
             {
                 result = null;
 
@@ -449,11 +449,11 @@ namespace SafePeopleRegistryApiSdk.Api
             /// Deserializes the response if the response is 500 InternalServerError
             /// </summary>
             /// <returns></returns>
-            public SafePeopleRegistryApiSdk.Model.ProjectHasOrganisationShow500Response? InternalServerError()
+            public SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response? InternalServerError()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsInternalServerError
-                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.ProjectHasOrganisationShow500Response>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -462,7 +462,7 @@ namespace SafePeopleRegistryApiSdk.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryInternalServerError([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.ProjectHasOrganisationShow500Response? result)
+            public bool TryInternalServerError([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response? result)
             {
                 result = null;
 

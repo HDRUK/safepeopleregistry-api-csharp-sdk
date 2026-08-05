@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**VendorWebhookReceiverReceive**](VendorWebhookReceiverApi.md#vendorwebhookreceiverreceive) | **POST** /api/v1/vendor-webhooks/{provider} | Receive a webhook callback from a vendor |
+| [**VendorWebhookReceiverReceive**](VendorWebhookReceiverApi.md#vendorwebhookreceiverreceive) | **POST** /api/v1/webhooks/{provider} | Receive a webhook callback from a vendor |
 
 <a id="vendorwebhookreceiverreceive"></a>
 # **VendorWebhookReceiverReceive**
