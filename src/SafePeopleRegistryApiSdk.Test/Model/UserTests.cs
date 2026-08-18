@@ -135,15 +135,6 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'DeclarationSigned'
-        /// </summary>
-        [Fact]
-        public void DeclarationSignedTest()
-        {
-            // TODO unit test for the property 'DeclarationSigned'
-        }
-
-        /// <summary>
         /// Test the property 'OrganisationId'
         /// </summary>
         [Fact]

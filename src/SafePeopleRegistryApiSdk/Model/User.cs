@@ -42,7 +42,6 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="emailVerifiedAt">emailVerifiedAt</param>
         /// <param name="consentScrape">consentScrape</param>
         /// <param name="publicOptIn">publicOptIn</param>
-        /// <param name="declarationSigned">declarationSigned</param>
         /// <param name="organisationId">organisationId</param>
         /// <param name="orcidScanning">orcidScanning</param>
         /// <param name="orcidScanningCompletedAt">orcidScanningCompletedAt</param>
@@ -50,7 +49,7 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="tAndCAgreed">tAndCAgreed</param>
         /// <param name="tAndCAgreementDate">tAndCAgreementDate</param>
         [JsonConstructor]
-        public User(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> emailVerifiedAt = default, Option<bool?> consentScrape = default, Option<bool?> publicOptIn = default, Option<bool?> declarationSigned = default, Option<int?> organisationId = default, Option<int?> orcidScanning = default, Option<string?> orcidScanningCompletedAt = default, Option<string?> location = default, Option<bool?> tAndCAgreed = default, Option<string?> tAndCAgreementDate = default)
+        public User(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> emailVerifiedAt = default, Option<bool?> consentScrape = default, Option<bool?> publicOptIn = default, Option<int?> organisationId = default, Option<int?> orcidScanning = default, Option<string?> orcidScanningCompletedAt = default, Option<string?> location = default, Option<bool?> tAndCAgreed = default, Option<string?> tAndCAgreementDate = default)
         {
             IdOption = id;
             CreatedAtOption = createdAt;
@@ -61,7 +60,6 @@ namespace SafePeopleRegistryApiSdk.Model
             EmailVerifiedAtOption = emailVerifiedAt;
             ConsentScrapeOption = consentScrape;
             PublicOptInOption = publicOptIn;
-            DeclarationSignedOption = declarationSigned;
             OrganisationIdOption = organisationId;
             OrcidScanningOption = orcidScanning;
             OrcidScanningCompletedAtOption = orcidScanningCompletedAt;
@@ -200,20 +198,6 @@ namespace SafePeopleRegistryApiSdk.Model
         public bool? PublicOptIn { get { return this.PublicOptInOption.Value; } set { this.PublicOptInOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of DeclarationSigned
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<bool?> DeclarationSignedOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets DeclarationSigned
-        /// </summary>
-        /* <example>true</example> */
-        [JsonPropertyName("declaration_signed")]
-        public bool? DeclarationSigned { get { return this.DeclarationSignedOption.Value; } set { this.DeclarationSignedOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of OrganisationId
         /// </summary>
         [JsonIgnore]
@@ -314,7 +298,6 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  EmailVerifiedAt: ").Append(EmailVerifiedAt).Append("\n");
             sb.Append("  ConsentScrape: ").Append(ConsentScrape).Append("\n");
             sb.Append("  PublicOptIn: ").Append(PublicOptIn).Append("\n");
-            sb.Append("  DeclarationSigned: ").Append(DeclarationSigned).Append("\n");
             sb.Append("  OrganisationId: ").Append(OrganisationId).Append("\n");
             sb.Append("  OrcidScanning: ").Append(OrcidScanning).Append("\n");
             sb.Append("  OrcidScanningCompletedAt: ").Append(OrcidScanningCompletedAt).Append("\n");
@@ -377,7 +360,6 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<string?> emailVerifiedAt = default;
             Option<bool?> consentScrape = default;
             Option<bool?> publicOptIn = default;
-            Option<bool?> declarationSigned = default;
             Option<int?> organisationId = default;
             Option<int?> orcidScanning = default;
             Option<string?> orcidScanningCompletedAt = default;
@@ -426,9 +408,6 @@ namespace SafePeopleRegistryApiSdk.Model
                             break;
                         case "public_opt_in":
                             publicOptIn = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
-                            break;
-                        case "declaration_signed":
-                            declarationSigned = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "organisation_id":
                             organisationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
@@ -481,9 +460,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (publicOptIn.IsSet && publicOptIn.Value == null)
                 throw new ArgumentNullException(nameof(publicOptIn), "Property is not nullable for class User.");
 
-            if (declarationSigned.IsSet && declarationSigned.Value == null)
-                throw new ArgumentNullException(nameof(declarationSigned), "Property is not nullable for class User.");
-
             if (organisationId.IsSet && organisationId.Value == null)
                 throw new ArgumentNullException(nameof(organisationId), "Property is not nullable for class User.");
 
@@ -502,7 +478,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (tAndCAgreementDate.IsSet && tAndCAgreementDate.Value == null)
                 throw new ArgumentNullException(nameof(tAndCAgreementDate), "Property is not nullable for class User.");
 
-            return new User(id, createdAt, updatedAt, firstName, lastName, email, emailVerifiedAt, consentScrape, publicOptIn, declarationSigned, organisationId, orcidScanning, orcidScanningCompletedAt, location, tAndCAgreed, tAndCAgreementDate);
+            return new User(id, createdAt, updatedAt, firstName, lastName, email, emailVerifiedAt, consentScrape, publicOptIn, organisationId, orcidScanning, orcidScanningCompletedAt, location, tAndCAgreed, tAndCAgreementDate);
         }
 
         /// <summary>
@@ -582,9 +558,6 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (user.PublicOptInOption.IsSet)
                 writer.WriteBoolean("public_opt_in", user.PublicOptInOption.Value!.Value);
-
-            if (user.DeclarationSignedOption.IsSet)
-                writer.WriteBoolean("declaration_signed", user.DeclarationSignedOption.Value!.Value);
 
             if (user.OrganisationIdOption.IsSet)
                 writer.WriteNumber("organisation_id", user.OrganisationIdOption.Value!.Value);

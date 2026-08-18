@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **EmailVerifiedAt** | **string** |  | [optional] 
 **ConsentScrape** | **bool** |  | [optional] 
 **PublicOptIn** | **bool** |  | [optional] 
-**DeclarationSigned** | **bool** |  | [optional] 
 **OrganisationId** | **int** |  | [optional] 
 **OrcidScanning** | **int** |  | [optional] 
 **OrcidScanningCompletedAt** | **string** |  | [optional] 

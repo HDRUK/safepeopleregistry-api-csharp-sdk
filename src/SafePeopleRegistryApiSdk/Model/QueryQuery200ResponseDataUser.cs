@@ -37,7 +37,6 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="firstName">firstName</param>
         /// <param name="lastName">lastName</param>
         /// <param name="name">name</param>
-        /// <param name="email">email</param>
         /// <param name="registryId">registryId</param>
         /// <param name="createdAt">createdAt</param>
         /// <param name="updatedAt">updatedAt</param>
@@ -47,7 +46,6 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="unclaimed">unclaimed</param>
         /// <param name="feedSource">feedSource</param>
         /// <param name="publicOptIn">publicOptIn</param>
-        /// <param name="declarationSigned">declarationSigned</param>
         /// <param name="organisationId">organisationId</param>
         /// <param name="orcidScanning">orcidScanning</param>
         /// <param name="orcidScanningCompletedAt">orcidScanningCompletedAt</param>
@@ -59,20 +57,18 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="location">location</param>
         /// <param name="tAndCAgreed">tAndCAgreed</param>
         /// <param name="tAndCAgreementDate">tAndCAgreementDate</param>
-        /// <param name="uksaRegistered">uksaRegistered</param>
         /// <param name="isSro">isSro</param>
         /// <param name="invitedBy">invitedBy</param>
         /// <param name="status">status</param>
         /// <param name="evaluation">evaluation</param>
         /// <param name="identity">identity</param>
         [JsonConstructor]
-        public QueryQuery200ResponseDataUser(Option<int?> id = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> name = default, Option<string?> email = default, Option<int?> registryId = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> userGroup = default, Option<bool?> consentScrape = default, Option<string?> orcId = default, Option<int?> unclaimed = default, Option<string?> feedSource = default, Option<int?> publicOptIn = default, Option<bool?> declarationSigned = default, Option<int?> organisationId = default, Option<bool?> orcidScanning = default, Option<string?> orcidScanningCompletedAt = default, Option<int?> isDelegate = default, Option<int?> isOrgAdmin = default, Option<int?> custodianId = default, Option<int?> custodianUserId = default, Option<string?> role = default, Option<string?> location = default, Option<bool?> tAndCAgreed = default, Option<string?> tAndCAgreementDate = default, Option<bool?> uksaRegistered = default, Option<bool?> isSro = default, Option<int?> invitedBy = default, Option<string?> status = default, Option<string?> evaluation = default, Option<Identity?> identity = default)
+        public QueryQuery200ResponseDataUser(Option<int?> id = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> name = default, Option<int?> registryId = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> userGroup = default, Option<bool?> consentScrape = default, Option<string?> orcId = default, Option<int?> unclaimed = default, Option<string?> feedSource = default, Option<int?> publicOptIn = default, Option<int?> organisationId = default, Option<bool?> orcidScanning = default, Option<string?> orcidScanningCompletedAt = default, Option<int?> isDelegate = default, Option<int?> isOrgAdmin = default, Option<int?> custodianId = default, Option<int?> custodianUserId = default, Option<string?> role = default, Option<string?> location = default, Option<bool?> tAndCAgreed = default, Option<string?> tAndCAgreementDate = default, Option<bool?> isSro = default, Option<int?> invitedBy = default, Option<string?> status = default, Option<string?> evaluation = default, Option<Identity?> identity = default)
         {
             IdOption = id;
             FirstNameOption = firstName;
             LastNameOption = lastName;
             NameOption = name;
-            EmailOption = email;
             RegistryIdOption = registryId;
             CreatedAtOption = createdAt;
             UpdatedAtOption = updatedAt;
@@ -82,7 +78,6 @@ namespace SafePeopleRegistryApiSdk.Model
             UnclaimedOption = unclaimed;
             FeedSourceOption = feedSource;
             PublicOptInOption = publicOptIn;
-            DeclarationSignedOption = declarationSigned;
             OrganisationIdOption = organisationId;
             OrcidScanningOption = orcidScanning;
             OrcidScanningCompletedAtOption = orcidScanningCompletedAt;
@@ -94,7 +89,6 @@ namespace SafePeopleRegistryApiSdk.Model
             LocationOption = location;
             TAndCAgreedOption = tAndCAgreed;
             TAndCAgreementDateOption = tAndCAgreementDate;
-            UksaRegisteredOption = uksaRegistered;
             IsSroOption = isSro;
             InvitedByOption = invitedBy;
             StatusOption = status;
@@ -160,20 +154,6 @@ namespace SafePeopleRegistryApiSdk.Model
         /* <example>Dan Ackroyd</example> */
         [JsonPropertyName("name")]
         public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of Email
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> EmailOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        /* <example>dan.ackroyd@example.com</example> */
-        [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RegistryId
@@ -298,20 +278,6 @@ namespace SafePeopleRegistryApiSdk.Model
         /* <example>0</example> */
         [JsonPropertyName("public_opt_in")]
         public int? PublicOptIn { get { return this.PublicOptInOption.Value; } set { this.PublicOptInOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of DeclarationSigned
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<bool?> DeclarationSignedOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets DeclarationSigned
-        /// </summary>
-        /* <example>false</example> */
-        [JsonPropertyName("declaration_signed")]
-        public bool? DeclarationSigned { get { return this.DeclarationSignedOption.Value; } set { this.DeclarationSignedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganisationId
@@ -463,20 +429,6 @@ namespace SafePeopleRegistryApiSdk.Model
         public string? TAndCAgreementDate { get { return this.TAndCAgreementDateOption.Value; } set { this.TAndCAgreementDateOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of UksaRegistered
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<bool?> UksaRegisteredOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets UksaRegistered
-        /// </summary>
-        /* <example>false</example> */
-        [JsonPropertyName("uksa_registered")]
-        public bool? UksaRegistered { get { return this.UksaRegisteredOption.Value; } set { this.UksaRegisteredOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of IsSro
         /// </summary>
         [JsonIgnore]
@@ -555,7 +507,6 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  RegistryId: ").Append(RegistryId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
@@ -565,7 +516,6 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  Unclaimed: ").Append(Unclaimed).Append("\n");
             sb.Append("  FeedSource: ").Append(FeedSource).Append("\n");
             sb.Append("  PublicOptIn: ").Append(PublicOptIn).Append("\n");
-            sb.Append("  DeclarationSigned: ").Append(DeclarationSigned).Append("\n");
             sb.Append("  OrganisationId: ").Append(OrganisationId).Append("\n");
             sb.Append("  OrcidScanning: ").Append(OrcidScanning).Append("\n");
             sb.Append("  OrcidScanningCompletedAt: ").Append(OrcidScanningCompletedAt).Append("\n");
@@ -577,7 +527,6 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  TAndCAgreed: ").Append(TAndCAgreed).Append("\n");
             sb.Append("  TAndCAgreementDate: ").Append(TAndCAgreementDate).Append("\n");
-            sb.Append("  UksaRegistered: ").Append(UksaRegistered).Append("\n");
             sb.Append("  IsSro: ").Append(IsSro).Append("\n");
             sb.Append("  InvitedBy: ").Append(InvitedBy).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -634,7 +583,6 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<string?> firstName = default;
             Option<string?> lastName = default;
             Option<string?> name = default;
-            Option<string?> email = default;
             Option<int?> registryId = default;
             Option<string?> createdAt = default;
             Option<string?> updatedAt = default;
@@ -644,7 +592,6 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<int?> unclaimed = default;
             Option<string?> feedSource = default;
             Option<int?> publicOptIn = default;
-            Option<bool?> declarationSigned = default;
             Option<int?> organisationId = default;
             Option<bool?> orcidScanning = default;
             Option<string?> orcidScanningCompletedAt = default;
@@ -656,7 +603,6 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<string?> location = default;
             Option<bool?> tAndCAgreed = default;
             Option<string?> tAndCAgreementDate = default;
-            Option<bool?> uksaRegistered = default;
             Option<bool?> isSro = default;
             Option<int?> invitedBy = default;
             Option<string?> status = default;
@@ -690,9 +636,6 @@ namespace SafePeopleRegistryApiSdk.Model
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "email":
-                            email = new Option<string?>(utf8JsonReader.GetString()!);
-                            break;
                         case "registry_id":
                             registryId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
@@ -719,9 +662,6 @@ namespace SafePeopleRegistryApiSdk.Model
                             break;
                         case "public_opt_in":
                             publicOptIn = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
-                            break;
-                        case "declaration_signed":
-                            declarationSigned = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "organisation_id":
                             organisationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
@@ -756,9 +696,6 @@ namespace SafePeopleRegistryApiSdk.Model
                         case "t_and_c_agreement_date":
                             tAndCAgreementDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "uksa_registered":
-                            uksaRegistered = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
-                            break;
                         case "is_sro":
                             isSro = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
@@ -792,9 +729,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (name.IsSet && name.Value == null)
                 throw new ArgumentNullException(nameof(name), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
-            if (email.IsSet && email.Value == null)
-                throw new ArgumentNullException(nameof(email), "Property is not nullable for class QueryQuery200ResponseDataUser.");
-
             if (registryId.IsSet && registryId.Value == null)
                 throw new ArgumentNullException(nameof(registryId), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
@@ -816,9 +750,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (publicOptIn.IsSet && publicOptIn.Value == null)
                 throw new ArgumentNullException(nameof(publicOptIn), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
-            if (declarationSigned.IsSet && declarationSigned.Value == null)
-                throw new ArgumentNullException(nameof(declarationSigned), "Property is not nullable for class QueryQuery200ResponseDataUser.");
-
             if (organisationId.IsSet && organisationId.Value == null)
                 throw new ArgumentNullException(nameof(organisationId), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
@@ -834,16 +765,13 @@ namespace SafePeopleRegistryApiSdk.Model
             if (tAndCAgreed.IsSet && tAndCAgreed.Value == null)
                 throw new ArgumentNullException(nameof(tAndCAgreed), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
-            if (uksaRegistered.IsSet && uksaRegistered.Value == null)
-                throw new ArgumentNullException(nameof(uksaRegistered), "Property is not nullable for class QueryQuery200ResponseDataUser.");
-
             if (isSro.IsSet && isSro.Value == null)
                 throw new ArgumentNullException(nameof(isSro), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
             if (status.IsSet && status.Value == null)
                 throw new ArgumentNullException(nameof(status), "Property is not nullable for class QueryQuery200ResponseDataUser.");
 
-            return new QueryQuery200ResponseDataUser(id, firstName, lastName, name, email, registryId, createdAt, updatedAt, userGroup, consentScrape, orcId, unclaimed, feedSource, publicOptIn, declarationSigned, organisationId, orcidScanning, orcidScanningCompletedAt, isDelegate, isOrgAdmin, custodianId, custodianUserId, role, location, tAndCAgreed, tAndCAgreementDate, uksaRegistered, isSro, invitedBy, status, evaluation, identity);
+            return new QueryQuery200ResponseDataUser(id, firstName, lastName, name, registryId, createdAt, updatedAt, userGroup, consentScrape, orcId, unclaimed, feedSource, publicOptIn, organisationId, orcidScanning, orcidScanningCompletedAt, isDelegate, isOrgAdmin, custodianId, custodianUserId, role, location, tAndCAgreed, tAndCAgreementDate, isSro, invitedBy, status, evaluation, identity);
         }
 
         /// <summary>
@@ -879,9 +807,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (queryQuery200ResponseDataUser.NameOption.IsSet && queryQuery200ResponseDataUser.Name == null)
                 throw new ArgumentNullException(nameof(queryQuery200ResponseDataUser.Name), "Property is required for class QueryQuery200ResponseDataUser.");
 
-            if (queryQuery200ResponseDataUser.EmailOption.IsSet && queryQuery200ResponseDataUser.Email == null)
-                throw new ArgumentNullException(nameof(queryQuery200ResponseDataUser.Email), "Property is required for class QueryQuery200ResponseDataUser.");
-
             if (queryQuery200ResponseDataUser.CreatedAtOption.IsSet && queryQuery200ResponseDataUser.CreatedAt == null)
                 throw new ArgumentNullException(nameof(queryQuery200ResponseDataUser.CreatedAt), "Property is required for class QueryQuery200ResponseDataUser.");
 
@@ -905,9 +830,6 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (queryQuery200ResponseDataUser.NameOption.IsSet)
                 writer.WriteString("name", queryQuery200ResponseDataUser.Name);
-
-            if (queryQuery200ResponseDataUser.EmailOption.IsSet)
-                writer.WriteString("email", queryQuery200ResponseDataUser.Email);
 
             if (queryQuery200ResponseDataUser.RegistryIdOption.IsSet)
                 writer.WriteNumber("registry_id", queryQuery200ResponseDataUser.RegistryIdOption.Value!.Value);
@@ -941,9 +863,6 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (queryQuery200ResponseDataUser.PublicOptInOption.IsSet)
                 writer.WriteNumber("public_opt_in", queryQuery200ResponseDataUser.PublicOptInOption.Value!.Value);
-
-            if (queryQuery200ResponseDataUser.DeclarationSignedOption.IsSet)
-                writer.WriteBoolean("declaration_signed", queryQuery200ResponseDataUser.DeclarationSignedOption.Value!.Value);
 
             if (queryQuery200ResponseDataUser.OrganisationIdOption.IsSet)
                 writer.WriteNumber("organisation_id", queryQuery200ResponseDataUser.OrganisationIdOption.Value!.Value);
@@ -995,9 +914,6 @@ namespace SafePeopleRegistryApiSdk.Model
                     writer.WriteString("t_and_c_agreement_date", queryQuery200ResponseDataUser.TAndCAgreementDate);
                 else
                     writer.WriteNull("t_and_c_agreement_date");
-
-            if (queryQuery200ResponseDataUser.UksaRegisteredOption.IsSet)
-                writer.WriteBoolean("uksa_registered", queryQuery200ResponseDataUser.UksaRegisteredOption.Value!.Value);
 
             if (queryQuery200ResponseDataUser.IsSroOption.IsSet)
                 writer.WriteBoolean("is_sro", queryQuery200ResponseDataUser.IsSroOption.Value!.Value);

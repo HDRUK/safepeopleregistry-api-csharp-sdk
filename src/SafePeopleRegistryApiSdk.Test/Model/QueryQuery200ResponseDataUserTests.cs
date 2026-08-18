@@ -90,15 +90,6 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Email'
-        /// </summary>
-        [Fact]
-        public void EmailTest()
-        {
-            // TODO unit test for the property 'Email'
-        }
-
-        /// <summary>
         /// Test the property 'RegistryId'
         /// </summary>
         [Fact]
@@ -177,15 +168,6 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         public void PublicOptInTest()
         {
             // TODO unit test for the property 'PublicOptIn'
-        }
-
-        /// <summary>
-        /// Test the property 'DeclarationSigned'
-        /// </summary>
-        [Fact]
-        public void DeclarationSignedTest()
-        {
-            // TODO unit test for the property 'DeclarationSigned'
         }
 
         /// <summary>
@@ -285,15 +267,6 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         public void TAndCAgreementDateTest()
         {
             // TODO unit test for the property 'TAndCAgreementDate'
-        }
-
-        /// <summary>
-        /// Test the property 'UksaRegistered'
-        /// </summary>
-        [Fact]
-        public void UksaRegisteredTest()
-        {
-            // TODO unit test for the property 'UksaRegistered'
         }
 
         /// <summary>
