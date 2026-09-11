@@ -36,16 +36,16 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="id">Model primary key</param>
         /// <param name="createdAt">createdAt</param>
         /// <param name="updatedAt">updatedAt</param>
-        /// <param name="entityModelId">entityModelId</param>
+        /// <param name="decisionModelId">decisionModelId</param>
         /// <param name="active">active</param>
         /// <param name="custodianId">custodianId</param>
         [JsonConstructor]
-        public CustodianModelConfig(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<int?> entityModelId = default, Option<bool?> active = default, Option<int?> custodianId = default)
+        public CustodianModelConfig(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<int?> decisionModelId = default, Option<bool?> active = default, Option<int?> custodianId = default)
         {
             IdOption = id;
             CreatedAtOption = createdAt;
             UpdatedAtOption = updatedAt;
-            EntityModelIdOption = entityModelId;
+            DecisionModelIdOption = decisionModelId;
             ActiveOption = active;
             CustodianIdOption = custodianId;
             OnCreated();
@@ -97,18 +97,18 @@ namespace SafePeopleRegistryApiSdk.Model
         public string? UpdatedAt { get { return this.UpdatedAtOption.Value; } set { this.UpdatedAtOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of EntityModelId
+        /// Used to track the state of DecisionModelId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<int?> EntityModelIdOption { get; private set; }
+        public Option<int?> DecisionModelIdOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EntityModelId
+        /// Gets or Sets DecisionModelId
         /// </summary>
         /* <example>1</example> */
-        [JsonPropertyName("entity_model_id")]
-        public int? EntityModelId { get { return this.EntityModelIdOption.Value; } set { this.EntityModelIdOption = new(value); } }
+        [JsonPropertyName("decision_model_id")]
+        public int? DecisionModelId { get { return this.DecisionModelIdOption.Value; } set { this.DecisionModelIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Active
@@ -149,7 +149,7 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  EntityModelId: ").Append(EntityModelId).Append("\n");
+            sb.Append("  DecisionModelId: ").Append(DecisionModelId).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  CustodianId: ").Append(CustodianId).Append("\n");
             sb.Append("}\n");
@@ -202,7 +202,7 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<int?> id = default;
             Option<string?> createdAt = default;
             Option<string?> updatedAt = default;
-            Option<int?> entityModelId = default;
+            Option<int?> decisionModelId = default;
             Option<bool?> active = default;
             Option<int?> custodianId = default;
 
@@ -230,8 +230,8 @@ namespace SafePeopleRegistryApiSdk.Model
                         case "updated_at":
                             updatedAt = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "entity_model_id":
-                            entityModelId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                        case "decision_model_id":
+                            decisionModelId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "active":
                             active = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
@@ -254,8 +254,8 @@ namespace SafePeopleRegistryApiSdk.Model
             if (updatedAt.IsSet && updatedAt.Value == null)
                 throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class CustodianModelConfig.");
 
-            if (entityModelId.IsSet && entityModelId.Value == null)
-                throw new ArgumentNullException(nameof(entityModelId), "Property is not nullable for class CustodianModelConfig.");
+            if (decisionModelId.IsSet && decisionModelId.Value == null)
+                throw new ArgumentNullException(nameof(decisionModelId), "Property is not nullable for class CustodianModelConfig.");
 
             if (active.IsSet && active.Value == null)
                 throw new ArgumentNullException(nameof(active), "Property is not nullable for class CustodianModelConfig.");
@@ -263,7 +263,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (custodianId.IsSet && custodianId.Value == null)
                 throw new ArgumentNullException(nameof(custodianId), "Property is not nullable for class CustodianModelConfig.");
 
-            return new CustodianModelConfig(id, createdAt, updatedAt, entityModelId, active, custodianId);
+            return new CustodianModelConfig(id, createdAt, updatedAt, decisionModelId, active, custodianId);
         }
 
         /// <summary>
@@ -305,8 +305,8 @@ namespace SafePeopleRegistryApiSdk.Model
             if (custodianModelConfig.UpdatedAtOption.IsSet)
                 writer.WriteString("updated_at", custodianModelConfig.UpdatedAt);
 
-            if (custodianModelConfig.EntityModelIdOption.IsSet)
-                writer.WriteNumber("entity_model_id", custodianModelConfig.EntityModelIdOption.Value!.Value);
+            if (custodianModelConfig.DecisionModelIdOption.IsSet)
+                writer.WriteNumber("decision_model_id", custodianModelConfig.DecisionModelIdOption.Value!.Value);
 
             if (custodianModelConfig.ActiveOption.IsSet)
                 writer.WriteBoolean("active", custodianModelConfig.ActiveOption.Value!.Value);

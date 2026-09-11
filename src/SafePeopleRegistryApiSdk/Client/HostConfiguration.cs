@@ -60,11 +60,10 @@ namespace SafePeopleRegistryApiSdk.Client
             _jsonOptions.Converters.Add(new CustodianWebhookReceiverJsonConverter());
             _jsonOptions.Converters.Add(new DebugLogJsonConverter());
             _jsonOptions.Converters.Add(new DecisionModelJsonConverter());
+            _jsonOptions.Converters.Add(new DecisionModelTypeJsonConverter());
             _jsonOptions.Converters.Add(new DepartmentJsonConverter());
             _jsonOptions.Converters.Add(new EducationJsonConverter());
             _jsonOptions.Converters.Add(new EndorsementJsonConverter());
-            _jsonOptions.Converters.Add(new EntityModelJsonConverter());
-            _jsonOptions.Converters.Add(new EntityModelTypeJsonConverter());
             _jsonOptions.Converters.Add(new ExperienceJsonConverter());
             _jsonOptions.Converters.Add(new FeatureIndex200ResponseJsonConverter());
             _jsonOptions.Converters.Add(new FeatureIndex200ResponseDataJsonConverter());
@@ -113,6 +112,8 @@ namespace SafePeopleRegistryApiSdk.Client
             _jsonOptions.Converters.Add(new RegistryHasTrainingJsonConverter());
             _jsonOptions.Converters.Add(new ResolutionJsonConverter());
             _jsonOptions.Converters.Add(new SectorJsonConverter());
+            _jsonOptions.Converters.Add(new SsoTenantJsonConverter());
+            _jsonOptions.Converters.Add(new SsoTenantDomainJsonConverter());
             _jsonOptions.Converters.Add(new StateJsonConverter());
             _jsonOptions.Converters.Add(new SubsidiaryJsonConverter());
             _jsonOptions.Converters.Add(new SystemConfigJsonConverter());

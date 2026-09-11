@@ -62,6 +62,8 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="cePlusCertified">cePlusCertified</param>
         /// <param name="cePlusCertificationNum">cePlusCertificationNum</param>
         /// <param name="cePlusExpiryDate">cePlusExpiryDate</param>
+        /// <param name="ceOrIsoCertified">True if either CE or ISO 27001 certification is currently valid</param>
+        /// <param name="cePlusOrIsoCertified">True if either CE+ or ISO 27001 certification is currently valid</param>
         /// <param name="idvtResult">idvtResult</param>
         /// <param name="idvtResultPerc">idvtResultPerc</param>
         /// <param name="idvtErrors">idvtErrors</param>
@@ -81,7 +83,7 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="icoDateRegistered">icoDateRegistered</param>
         /// <param name="icoExpiryDate">icoExpiryDate</param>
         [JsonConstructor]
-        public Organisation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> organisationName = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<string?> leadApplicantOrganisationName = default, Option<string?> leadApplicantEmail = default, Option<string?> organisationUniqueId = default, Option<string?> applicantNames = default, Option<string?> fundersAndSponsors = default, Option<string?> subLicenseArrangements = default, Option<bool?> verified = default, Option<string?> dsptkOdsCode = default, Option<bool?> dsptkCertified = default, Option<string?> dsptkExpiryDate = default, Option<bool?> iso27001Certified = default, Option<string?> iso27001CertificationNum = default, Option<string?> isoExpiryDate = default, Option<bool?> ceCertified = default, Option<string?> ceCertificationNum = default, Option<string?> ceExpiryDate = default, Option<bool?> cePlusCertified = default, Option<string?> cePlusCertificationNum = default, Option<string?> cePlusExpiryDate = default, Option<int?> idvtResult = default, Option<int?> idvtResultPerc = default, Option<string?> idvtErrors = default, Option<string?> idvtCompletedAt = default, Option<string?> companiesHouseNo = default, Option<int?> sectorId = default, Option<string?> rorId = default, Option<string?> website = default, Option<bool?> smbStatus = default, Option<int?> organisationSize = default, Option<bool?> unclaimed = default, Option<bool?> systemApproved = default, Option<string?> odsId = default, Option<string?> dsptkStatus = default, Option<string?> dsptkDateLastPublished = default, Option<string?> icoRegistrationId = default, Option<string?> icoDateRegistered = default, Option<string?> icoExpiryDate = default)
+        public Organisation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> organisationName = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<string?> leadApplicantOrganisationName = default, Option<string?> leadApplicantEmail = default, Option<string?> organisationUniqueId = default, Option<string?> applicantNames = default, Option<string?> fundersAndSponsors = default, Option<string?> subLicenseArrangements = default, Option<bool?> verified = default, Option<string?> dsptkOdsCode = default, Option<bool?> dsptkCertified = default, Option<string?> dsptkExpiryDate = default, Option<bool?> iso27001Certified = default, Option<string?> iso27001CertificationNum = default, Option<string?> isoExpiryDate = default, Option<bool?> ceCertified = default, Option<string?> ceCertificationNum = default, Option<string?> ceExpiryDate = default, Option<bool?> cePlusCertified = default, Option<string?> cePlusCertificationNum = default, Option<string?> cePlusExpiryDate = default, Option<bool?> ceOrIsoCertified = default, Option<bool?> cePlusOrIsoCertified = default, Option<int?> idvtResult = default, Option<int?> idvtResultPerc = default, Option<string?> idvtErrors = default, Option<string?> idvtCompletedAt = default, Option<string?> companiesHouseNo = default, Option<int?> sectorId = default, Option<string?> rorId = default, Option<string?> website = default, Option<bool?> smbStatus = default, Option<int?> organisationSize = default, Option<bool?> unclaimed = default, Option<bool?> systemApproved = default, Option<string?> odsId = default, Option<string?> dsptkStatus = default, Option<string?> dsptkDateLastPublished = default, Option<string?> icoRegistrationId = default, Option<string?> icoDateRegistered = default, Option<string?> icoExpiryDate = default)
         {
             IdOption = id;
             CreatedAtOption = createdAt;
@@ -112,6 +114,8 @@ namespace SafePeopleRegistryApiSdk.Model
             CePlusCertifiedOption = cePlusCertified;
             CePlusCertificationNumOption = cePlusCertificationNum;
             CePlusExpiryDateOption = cePlusExpiryDate;
+            CeOrIsoCertifiedOption = ceOrIsoCertified;
+            CePlusOrIsoCertifiedOption = cePlusOrIsoCertified;
             IdvtResultOption = idvtResult;
             IdvtResultPercOption = idvtResultPerc;
             IdvtErrorsOption = idvtErrors;
@@ -543,6 +547,36 @@ namespace SafePeopleRegistryApiSdk.Model
         public string? CePlusExpiryDate { get { return this.CePlusExpiryDateOption.Value; } set { this.CePlusExpiryDateOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CeOrIsoCertified
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> CeOrIsoCertifiedOption { get; private set; }
+
+        /// <summary>
+        /// True if either CE or ISO 27001 certification is currently valid
+        /// </summary>
+        /// <value>True if either CE or ISO 27001 certification is currently valid</value>
+        /* <example>true</example> */
+        [JsonPropertyName("ce_or_iso_certified")]
+        public bool? CeOrIsoCertified { get { return this.CeOrIsoCertifiedOption.Value; } set { this.CeOrIsoCertifiedOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of CePlusOrIsoCertified
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> CePlusOrIsoCertifiedOption { get; private set; }
+
+        /// <summary>
+        /// True if either CE+ or ISO 27001 certification is currently valid
+        /// </summary>
+        /// <value>True if either CE+ or ISO 27001 certification is currently valid</value>
+        /* <example>true</example> */
+        [JsonPropertyName("ce_plus_or_iso_certified")]
+        public bool? CePlusOrIsoCertified { get { return this.CePlusOrIsoCertifiedOption.Value; } set { this.CePlusOrIsoCertifiedOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of IdvtResult
         /// </summary>
         [JsonIgnore]
@@ -836,6 +870,8 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  CePlusCertified: ").Append(CePlusCertified).Append("\n");
             sb.Append("  CePlusCertificationNum: ").Append(CePlusCertificationNum).Append("\n");
             sb.Append("  CePlusExpiryDate: ").Append(CePlusExpiryDate).Append("\n");
+            sb.Append("  CeOrIsoCertified: ").Append(CeOrIsoCertified).Append("\n");
+            sb.Append("  CePlusOrIsoCertified: ").Append(CePlusOrIsoCertified).Append("\n");
             sb.Append("  IdvtResult: ").Append(IdvtResult).Append("\n");
             sb.Append("  IdvtResultPerc: ").Append(IdvtResultPerc).Append("\n");
             sb.Append("  IdvtErrors: ").Append(IdvtErrors).Append("\n");
@@ -930,6 +966,8 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<bool?> cePlusCertified = default;
             Option<string?> cePlusCertificationNum = default;
             Option<string?> cePlusExpiryDate = default;
+            Option<bool?> ceOrIsoCertified = default;
+            Option<bool?> cePlusOrIsoCertified = default;
             Option<int?> idvtResult = default;
             Option<int?> idvtResultPerc = default;
             Option<string?> idvtErrors = default;
@@ -1050,6 +1088,12 @@ namespace SafePeopleRegistryApiSdk.Model
                             break;
                         case "ce_plus_expiry_date":
                             cePlusExpiryDate = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "ce_or_iso_certified":
+                            ceOrIsoCertified = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "ce_plus_or_iso_certified":
+                            cePlusOrIsoCertified = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "idvt_result":
                             idvtResult = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
@@ -1198,6 +1242,12 @@ namespace SafePeopleRegistryApiSdk.Model
             if (cePlusExpiryDate.IsSet && cePlusExpiryDate.Value == null)
                 throw new ArgumentNullException(nameof(cePlusExpiryDate), "Property is not nullable for class Organisation.");
 
+            if (ceOrIsoCertified.IsSet && ceOrIsoCertified.Value == null)
+                throw new ArgumentNullException(nameof(ceOrIsoCertified), "Property is not nullable for class Organisation.");
+
+            if (cePlusOrIsoCertified.IsSet && cePlusOrIsoCertified.Value == null)
+                throw new ArgumentNullException(nameof(cePlusOrIsoCertified), "Property is not nullable for class Organisation.");
+
             if (idvtResult.IsSet && idvtResult.Value == null)
                 throw new ArgumentNullException(nameof(idvtResult), "Property is not nullable for class Organisation.");
 
@@ -1252,7 +1302,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (icoExpiryDate.IsSet && icoExpiryDate.Value == null)
                 throw new ArgumentNullException(nameof(icoExpiryDate), "Property is not nullable for class Organisation.");
 
-            return new Organisation(id, createdAt, updatedAt, organisationName, address1, address2, town, county, country, postcode, leadApplicantOrganisationName, leadApplicantEmail, organisationUniqueId, applicantNames, fundersAndSponsors, subLicenseArrangements, verified, dsptkOdsCode, dsptkCertified, dsptkExpiryDate, iso27001Certified, iso27001CertificationNum, isoExpiryDate, ceCertified, ceCertificationNum, ceExpiryDate, cePlusCertified, cePlusCertificationNum, cePlusExpiryDate, idvtResult, idvtResultPerc, idvtErrors, idvtCompletedAt, companiesHouseNo, sectorId, rorId, website, smbStatus, organisationSize, unclaimed, systemApproved, odsId, dsptkStatus, dsptkDateLastPublished, icoRegistrationId, icoDateRegistered, icoExpiryDate);
+            return new Organisation(id, createdAt, updatedAt, organisationName, address1, address2, town, county, country, postcode, leadApplicantOrganisationName, leadApplicantEmail, organisationUniqueId, applicantNames, fundersAndSponsors, subLicenseArrangements, verified, dsptkOdsCode, dsptkCertified, dsptkExpiryDate, iso27001Certified, iso27001CertificationNum, isoExpiryDate, ceCertified, ceCertificationNum, ceExpiryDate, cePlusCertified, cePlusCertificationNum, cePlusExpiryDate, ceOrIsoCertified, cePlusOrIsoCertified, idvtResult, idvtResultPerc, idvtErrors, idvtCompletedAt, companiesHouseNo, sectorId, rorId, website, smbStatus, organisationSize, unclaimed, systemApproved, odsId, dsptkStatus, dsptkDateLastPublished, icoRegistrationId, icoDateRegistered, icoExpiryDate);
         }
 
         /// <summary>
@@ -1467,6 +1517,12 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (organisation.CePlusExpiryDateOption.IsSet)
                 writer.WriteString("ce_plus_expiry_date", organisation.CePlusExpiryDate);
+
+            if (organisation.CeOrIsoCertifiedOption.IsSet)
+                writer.WriteBoolean("ce_or_iso_certified", organisation.CeOrIsoCertifiedOption.Value!.Value);
+
+            if (organisation.CePlusOrIsoCertifiedOption.IsSet)
+                writer.WriteBoolean("ce_plus_or_iso_certified", organisation.CePlusOrIsoCertifiedOption.Value!.Value);
 
             if (organisation.IdvtResultOption.IsSet)
                 writer.WriteNumber("idvt_result", organisation.IdvtResultOption.Value!.Value);

@@ -26,19 +26,19 @@ using SafePeopleRegistryApiSdk.Client;
 namespace SafePeopleRegistryApiSdk.Model
 {
     /// <summary>
-    /// Model representing types of entity models
+    /// Model representing types of decision models
     /// </summary>
-    public partial class EntityModelType : IValidatableObject
+    public partial class DecisionModelType : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityModelType" /> class.
+        /// Initializes a new instance of the <see cref="DecisionModelType" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier for the entity model type</param>
-        /// <param name="name">Name of the entity model type</param>
-        /// <param name="createdAt">Timestamp when the entity model type was created</param>
-        /// <param name="updatedAt">Timestamp when the entity model type was last updated</param>
+        /// <param name="id">Unique identifier for the decision model type</param>
+        /// <param name="name">Name of the decision model type</param>
+        /// <param name="createdAt">Timestamp when the decision model type was created</param>
+        /// <param name="updatedAt">Timestamp when the decision model type was last updated</param>
         [JsonConstructor]
-        public EntityModelType(Option<int?> id = default, Option<string?> name = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default)
+        public DecisionModelType(Option<int?> id = default, Option<string?> name = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default)
         {
             IdOption = id;
             NameOption = name;
@@ -57,9 +57,9 @@ namespace SafePeopleRegistryApiSdk.Model
         public Option<int?> IdOption { get; private set; }
 
         /// <summary>
-        /// Unique identifier for the entity model type
+        /// Unique identifier for the decision model type
         /// </summary>
-        /// <value>Unique identifier for the entity model type</value>
+        /// <value>Unique identifier for the decision model type</value>
         /* <example>1</example> */
         [JsonPropertyName("id")]
         public int? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
@@ -72,9 +72,9 @@ namespace SafePeopleRegistryApiSdk.Model
         public Option<string?> NameOption { get; private set; }
 
         /// <summary>
-        /// Name of the entity model type
+        /// Name of the decision model type
         /// </summary>
-        /// <value>Name of the entity model type</value>
+        /// <value>Name of the decision model type</value>
         /* <example>Decision Models</example> */
         [JsonPropertyName("name")]
         public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
@@ -87,9 +87,9 @@ namespace SafePeopleRegistryApiSdk.Model
         public Option<DateTime?> CreatedAtOption { get; private set; }
 
         /// <summary>
-        /// Timestamp when the entity model type was created
+        /// Timestamp when the decision model type was created
         /// </summary>
-        /// <value>Timestamp when the entity model type was created</value>
+        /// <value>Timestamp when the decision model type was created</value>
         /* <example>2025-06-25T12:00Z</example> */
         [JsonPropertyName("created_at")]
         public DateTime? CreatedAt { get { return this.CreatedAtOption.Value; } set { this.CreatedAtOption = new(value); } }
@@ -102,9 +102,9 @@ namespace SafePeopleRegistryApiSdk.Model
         public Option<DateTime?> UpdatedAtOption { get; private set; }
 
         /// <summary>
-        /// Timestamp when the entity model type was last updated
+        /// Timestamp when the decision model type was last updated
         /// </summary>
-        /// <value>Timestamp when the entity model type was last updated</value>
+        /// <value>Timestamp when the decision model type was last updated</value>
         /* <example>2025-06-25T12:00Z</example> */
         [JsonPropertyName("updated_at")]
         public DateTime? UpdatedAt { get { return this.UpdatedAtOption.Value; } set { this.UpdatedAtOption = new(value); } }
@@ -116,7 +116,7 @@ namespace SafePeopleRegistryApiSdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EntityModelType {\n");
+            sb.Append("class DecisionModelType {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -137,16 +137,16 @@ namespace SafePeopleRegistryApiSdk.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="EntityModelType" />
+    /// A Json converter for type <see cref="DecisionModelType" />
     /// </summary>
-    public partial class EntityModelTypeJsonConverter : JsonConverter<EntityModelType>
+    public partial class DecisionModelTypeJsonConverter : JsonConverter<DecisionModelType>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityModelTypeJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="DecisionModelTypeJsonConverter" /> class.
         /// </summary>
-        public EntityModelTypeJsonConverter()
+        public DecisionModelTypeJsonConverter()
         {
             OnCreated();
         }
@@ -162,14 +162,14 @@ namespace SafePeopleRegistryApiSdk.Model
         public string UpdatedAtFormat { get; private set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
 
         /// <summary>
-        /// Deserializes json to <see cref="EntityModelType" />
+        /// Deserializes json to <see cref="DecisionModelType" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override EntityModelType Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override DecisionModelType Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -217,58 +217,58 @@ namespace SafePeopleRegistryApiSdk.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class EntityModelType.");
+                throw new ArgumentNullException(nameof(id), "Property is not nullable for class DecisionModelType.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class EntityModelType.");
+                throw new ArgumentNullException(nameof(name), "Property is not nullable for class DecisionModelType.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class EntityModelType.");
+                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class DecisionModelType.");
 
             if (updatedAt.IsSet && updatedAt.Value == null)
-                throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class EntityModelType.");
+                throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class DecisionModelType.");
 
-            return new EntityModelType(id, name, createdAt, updatedAt);
+            return new DecisionModelType(id, name, createdAt, updatedAt);
         }
 
         /// <summary>
-        /// Serializes a <see cref="EntityModelType" />
+        /// Serializes a <see cref="DecisionModelType" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="entityModelType"></param>
+        /// <param name="decisionModelType"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, EntityModelType entityModelType, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, DecisionModelType decisionModelType, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, entityModelType, jsonSerializerOptions);
+            WriteProperties(writer, decisionModelType, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="EntityModelType" />
+        /// Serializes the properties of <see cref="DecisionModelType" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="entityModelType"></param>
+        /// <param name="decisionModelType"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, EntityModelType entityModelType, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, DecisionModelType decisionModelType, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (entityModelType.NameOption.IsSet && entityModelType.Name == null)
-                throw new ArgumentNullException(nameof(entityModelType.Name), "Property is required for class EntityModelType.");
+            if (decisionModelType.NameOption.IsSet && decisionModelType.Name == null)
+                throw new ArgumentNullException(nameof(decisionModelType.Name), "Property is required for class DecisionModelType.");
 
-            if (entityModelType.IdOption.IsSet)
-                writer.WriteNumber("id", entityModelType.IdOption.Value!.Value);
+            if (decisionModelType.IdOption.IsSet)
+                writer.WriteNumber("id", decisionModelType.IdOption.Value!.Value);
 
-            if (entityModelType.NameOption.IsSet)
-                writer.WriteString("name", entityModelType.Name);
+            if (decisionModelType.NameOption.IsSet)
+                writer.WriteString("name", decisionModelType.Name);
 
-            if (entityModelType.CreatedAtOption.IsSet)
-                writer.WriteString("created_at", entityModelType.CreatedAtOption.Value!.Value.ToString(CreatedAtFormat));
+            if (decisionModelType.CreatedAtOption.IsSet)
+                writer.WriteString("created_at", decisionModelType.CreatedAtOption.Value!.Value.ToString(CreatedAtFormat));
 
-            if (entityModelType.UpdatedAtOption.IsSet)
-                writer.WriteString("updated_at", entityModelType.UpdatedAtOption.Value!.Value.ToString(UpdatedAtFormat));
+            if (decisionModelType.UpdatedAtOption.IsSet)
+                writer.WriteString("updated_at", decisionModelType.UpdatedAtOption.Value!.Value.ToString(UpdatedAtFormat));
         }
     }
 }

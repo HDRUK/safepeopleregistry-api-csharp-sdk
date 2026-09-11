@@ -48,6 +48,8 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="idvtDocumentNumber">Document number used for IDVT</param>
         /// <param name="idvtDocumentCountry">Country of the document used for IDVT</param>
         /// <param name="idvtDocumentValidUntil">Validity date of the document used for IDVT</param>
+        /// <param name="idvtDocumentFirstName">First name on the document used for IDVT</param>
+        /// <param name="idvtDocumentValidLastName">Last name on the document used for IDVT</param>
         /// <param name="idvtAttemptId">ID of the IDVT attempt</param>
         /// <param name="idvtContextId">Context ID for IDVT</param>
         /// <param name="idvtDocumentDob">Date of birth on the document used for IDVT</param>
@@ -59,7 +61,7 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="updatedAt">Timestamp when the identity record was last updated</param>
         /// <param name="deletedAt">Timestamp when the identity record was deleted</param>
         [JsonConstructor]
-        public Identity(Option<int?> id = default, Option<int?> registryId = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<DateOnly?> dob = default, Option<int?> idvtSuccess = default, Option<string?> idvtIdentificationNumber = default, Option<string?> idvtDocumentType = default, Option<string?> idvtDocumentNumber = default, Option<string?> idvtDocumentCountry = default, Option<DateOnly?> idvtDocumentValidUntil = default, Option<string?> idvtAttemptId = default, Option<string?> idvtContextId = default, Option<DateOnly?> idvtDocumentDob = default, Option<string?> idvtContext = default, Option<DateTime?> idvtCompletedAt = default, Option<string?> idvtResultText = default, Option<DateTime?> idvtStartedAt = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default, Option<DateTime?> deletedAt = default)
+        public Identity(Option<int?> id = default, Option<int?> registryId = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<DateOnly?> dob = default, Option<int?> idvtSuccess = default, Option<string?> idvtIdentificationNumber = default, Option<string?> idvtDocumentType = default, Option<string?> idvtDocumentNumber = default, Option<string?> idvtDocumentCountry = default, Option<DateOnly?> idvtDocumentValidUntil = default, Option<string?> idvtDocumentFirstName = default, Option<string?> idvtDocumentValidLastName = default, Option<string?> idvtAttemptId = default, Option<string?> idvtContextId = default, Option<DateOnly?> idvtDocumentDob = default, Option<string?> idvtContext = default, Option<DateTime?> idvtCompletedAt = default, Option<string?> idvtResultText = default, Option<DateTime?> idvtStartedAt = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default, Option<DateTime?> deletedAt = default)
         {
             IdOption = id;
             RegistryIdOption = registryId;
@@ -76,6 +78,8 @@ namespace SafePeopleRegistryApiSdk.Model
             IdvtDocumentNumberOption = idvtDocumentNumber;
             IdvtDocumentCountryOption = idvtDocumentCountry;
             IdvtDocumentValidUntilOption = idvtDocumentValidUntil;
+            IdvtDocumentFirstNameOption = idvtDocumentFirstName;
+            IdvtDocumentValidLastNameOption = idvtDocumentValidLastName;
             IdvtAttemptIdOption = idvtAttemptId;
             IdvtContextIdOption = idvtContextId;
             IdvtDocumentDobOption = idvtDocumentDob;
@@ -317,6 +321,36 @@ namespace SafePeopleRegistryApiSdk.Model
         public DateOnly? IdvtDocumentValidUntil { get { return this.IdvtDocumentValidUntilOption.Value; } set { this.IdvtDocumentValidUntilOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of IdvtDocumentFirstName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> IdvtDocumentFirstNameOption { get; private set; }
+
+        /// <summary>
+        /// First name on the document used for IDVT
+        /// </summary>
+        /// <value>First name on the document used for IDVT</value>
+        /* <example>Joe</example> */
+        [JsonPropertyName("idvt_document_first_name")]
+        public string? IdvtDocumentFirstName { get { return this.IdvtDocumentFirstNameOption.Value; } set { this.IdvtDocumentFirstNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of IdvtDocumentValidLastName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> IdvtDocumentValidLastNameOption { get; private set; }
+
+        /// <summary>
+        /// Last name on the document used for IDVT
+        /// </summary>
+        /// <value>Last name on the document used for IDVT</value>
+        /* <example>Bloggs</example> */
+        [JsonPropertyName("idvt_document_valid_last_name")]
+        public string? IdvtDocumentValidLastName { get { return this.IdvtDocumentValidLastNameOption.Value; } set { this.IdvtDocumentValidLastNameOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of IdvtAttemptId
         /// </summary>
         [JsonIgnore]
@@ -489,6 +523,8 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  IdvtDocumentNumber: ").Append(IdvtDocumentNumber).Append("\n");
             sb.Append("  IdvtDocumentCountry: ").Append(IdvtDocumentCountry).Append("\n");
             sb.Append("  IdvtDocumentValidUntil: ").Append(IdvtDocumentValidUntil).Append("\n");
+            sb.Append("  IdvtDocumentFirstName: ").Append(IdvtDocumentFirstName).Append("\n");
+            sb.Append("  IdvtDocumentValidLastName: ").Append(IdvtDocumentValidLastName).Append("\n");
             sb.Append("  IdvtAttemptId: ").Append(IdvtAttemptId).Append("\n");
             sb.Append("  IdvtContextId: ").Append(IdvtContextId).Append("\n");
             sb.Append("  IdvtDocumentDob: ").Append(IdvtDocumentDob).Append("\n");
@@ -601,6 +637,8 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<string?> idvtDocumentNumber = default;
             Option<string?> idvtDocumentCountry = default;
             Option<DateOnly?> idvtDocumentValidUntil = default;
+            Option<string?> idvtDocumentFirstName = default;
+            Option<string?> idvtDocumentValidLastName = default;
             Option<string?> idvtAttemptId = default;
             Option<string?> idvtContextId = default;
             Option<DateOnly?> idvtDocumentDob = default;
@@ -671,6 +709,12 @@ namespace SafePeopleRegistryApiSdk.Model
                             break;
                         case "idvt_document_valid_until":
                             idvtDocumentValidUntil = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "idvt_document_first_name":
+                            idvtDocumentFirstName = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "idvt_document_valid_last_name":
+                            idvtDocumentValidLastName = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "idvt_attempt_id":
                             idvtAttemptId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -753,6 +797,12 @@ namespace SafePeopleRegistryApiSdk.Model
             if (idvtDocumentValidUntil.IsSet && idvtDocumentValidUntil.Value == null)
                 throw new ArgumentNullException(nameof(idvtDocumentValidUntil), "Property is not nullable for class Identity.");
 
+            if (idvtDocumentFirstName.IsSet && idvtDocumentFirstName.Value == null)
+                throw new ArgumentNullException(nameof(idvtDocumentFirstName), "Property is not nullable for class Identity.");
+
+            if (idvtDocumentValidLastName.IsSet && idvtDocumentValidLastName.Value == null)
+                throw new ArgumentNullException(nameof(idvtDocumentValidLastName), "Property is not nullable for class Identity.");
+
             if (idvtAttemptId.IsSet && idvtAttemptId.Value == null)
                 throw new ArgumentNullException(nameof(idvtAttemptId), "Property is not nullable for class Identity.");
 
@@ -783,7 +833,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (deletedAt.IsSet && deletedAt.Value == null)
                 throw new ArgumentNullException(nameof(deletedAt), "Property is not nullable for class Identity.");
 
-            return new Identity(id, registryId, address1, address2, town, county, country, postcode, dob, idvtSuccess, idvtIdentificationNumber, idvtDocumentType, idvtDocumentNumber, idvtDocumentCountry, idvtDocumentValidUntil, idvtAttemptId, idvtContextId, idvtDocumentDob, idvtContext, idvtCompletedAt, idvtResultText, idvtStartedAt, createdAt, updatedAt, deletedAt);
+            return new Identity(id, registryId, address1, address2, town, county, country, postcode, dob, idvtSuccess, idvtIdentificationNumber, idvtDocumentType, idvtDocumentNumber, idvtDocumentCountry, idvtDocumentValidUntil, idvtDocumentFirstName, idvtDocumentValidLastName, idvtAttemptId, idvtContextId, idvtDocumentDob, idvtContext, idvtCompletedAt, idvtResultText, idvtStartedAt, createdAt, updatedAt, deletedAt);
         }
 
         /// <summary>
@@ -839,6 +889,12 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (identity.IdvtDocumentCountryOption.IsSet && identity.IdvtDocumentCountry == null)
                 throw new ArgumentNullException(nameof(identity.IdvtDocumentCountry), "Property is required for class Identity.");
+
+            if (identity.IdvtDocumentFirstNameOption.IsSet && identity.IdvtDocumentFirstName == null)
+                throw new ArgumentNullException(nameof(identity.IdvtDocumentFirstName), "Property is required for class Identity.");
+
+            if (identity.IdvtDocumentValidLastNameOption.IsSet && identity.IdvtDocumentValidLastName == null)
+                throw new ArgumentNullException(nameof(identity.IdvtDocumentValidLastName), "Property is required for class Identity.");
 
             if (identity.IdvtAttemptIdOption.IsSet && identity.IdvtAttemptId == null)
                 throw new ArgumentNullException(nameof(identity.IdvtAttemptId), "Property is required for class Identity.");
@@ -896,6 +952,12 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (identity.IdvtDocumentValidUntilOption.IsSet)
                 writer.WriteString("idvt_document_valid_until", identity.IdvtDocumentValidUntilOption.Value!.Value.ToString(IdvtDocumentValidUntilFormat));
+
+            if (identity.IdvtDocumentFirstNameOption.IsSet)
+                writer.WriteString("idvt_document_first_name", identity.IdvtDocumentFirstName);
+
+            if (identity.IdvtDocumentValidLastNameOption.IsSet)
+                writer.WriteString("idvt_document_valid_last_name", identity.IdvtDocumentValidLastName);
 
             if (identity.IdvtAttemptIdOption.IsSet)
                 writer.WriteString("idvt_attempt_id", identity.IdvtAttemptId);

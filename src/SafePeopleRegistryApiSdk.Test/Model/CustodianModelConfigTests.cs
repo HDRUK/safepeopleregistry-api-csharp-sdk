@@ -81,12 +81,12 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'EntityModelId'
+        /// Test the property 'DecisionModelId'
         /// </summary>
         [Fact]
-        public void EntityModelIdTest()
+        public void DecisionModelIdTest()
         {
-            // TODO unit test for the property 'EntityModelId'
+            // TODO unit test for the property 'DecisionModelId'
         }
 
         /// <summary>

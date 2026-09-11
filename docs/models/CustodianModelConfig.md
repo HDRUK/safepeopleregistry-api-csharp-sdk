@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Id** | **int** | Model primary key | [optional] 
 **CreatedAt** | **string** |  | [optional] 
 **UpdatedAt** | **string** |  | [optional] 
-**EntityModelId** | **int** |  | [optional] 
+**DecisionModelId** | **int** |  | [optional] 
 **Active** | **bool** |  | [optional] 
 **CustodianId** | **int** |  | [optional] 
 

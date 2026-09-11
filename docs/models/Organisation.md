@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **CePlusCertified** | **bool** |  | [optional] 
 **CePlusCertificationNum** | **string** |  | [optional] 
 **CePlusExpiryDate** | **string** |  | [optional] 
+**CeOrIsoCertified** | **bool** | True if either CE or ISO 27001 certification is currently valid | [optional] 
+**CePlusOrIsoCertified** | **bool** | True if either CE+ or ISO 27001 certification is currently valid | [optional] 
 **IdvtResult** | **int** |  | [optional] 
 **IdvtResultPerc** | **int** |  | [optional] 
 **IdvtErrors** | **string** |  | [optional] 

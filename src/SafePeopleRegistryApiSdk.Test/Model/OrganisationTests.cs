@@ -315,6 +315,24 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'CeOrIsoCertified'
+        /// </summary>
+        [Fact]
+        public void CeOrIsoCertifiedTest()
+        {
+            // TODO unit test for the property 'CeOrIsoCertified'
+        }
+
+        /// <summary>
+        /// Test the property 'CePlusOrIsoCertified'
+        /// </summary>
+        [Fact]
+        public void CePlusOrIsoCertifiedTest()
+        {
+            // TODO unit test for the property 'CePlusOrIsoCertified'
+        }
+
+        /// <summary>
         /// Test the property 'IdvtResult'
         /// </summary>
         [Fact]

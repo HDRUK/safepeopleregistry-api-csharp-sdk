@@ -189,6 +189,24 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'IdvtDocumentFirstName'
+        /// </summary>
+        [Fact]
+        public void IdvtDocumentFirstNameTest()
+        {
+            // TODO unit test for the property 'IdvtDocumentFirstName'
+        }
+
+        /// <summary>
+        /// Test the property 'IdvtDocumentValidLastName'
+        /// </summary>
+        [Fact]
+        public void IdvtDocumentValidLastNameTest()
+        {
+            // TODO unit test for the property 'IdvtDocumentValidLastName'
+        }
+
+        /// <summary>
         /// Test the property 'IdvtAttemptId'
         /// </summary>
         [Fact]

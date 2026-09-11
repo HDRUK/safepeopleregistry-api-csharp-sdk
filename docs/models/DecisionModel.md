@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **RuleClass** | **string** | Class defining the rules for the decision model | 
 **Id** | **int** | Unique identifier for the decision model | [optional] 
 **Description** | **string** | Description of the decision model | [optional] 
-**EntityModelTypeId** | **int** | ID of the entity model type associated with the decision | [optional] 
+**DecisionModelTypeId** | **int** | ID of the decision model type associated with the decision | [optional] 
 **CreatedAt** | **DateTime** | Timestamp when the decision model was created | [optional] 
 **UpdatedAt** | **DateTime** | Timestamp when the decision model was last updated | [optional] 
 

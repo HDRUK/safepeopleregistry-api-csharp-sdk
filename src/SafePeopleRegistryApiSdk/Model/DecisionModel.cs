@@ -38,18 +38,18 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="ruleClass">Class defining the rules for the decision model</param>
         /// <param name="id">Unique identifier for the decision model</param>
         /// <param name="description">Description of the decision model</param>
-        /// <param name="entityModelTypeId">ID of the entity model type associated with the decision</param>
+        /// <param name="decisionModelTypeId">ID of the decision model type associated with the decision</param>
         /// <param name="createdAt">Timestamp when the decision model was created</param>
         /// <param name="updatedAt">Timestamp when the decision model was last updated</param>
         [JsonConstructor]
-        public DecisionModel(string modelType, string conditions, string ruleClass, Option<int?> id = default, Option<string?> description = default, Option<int?> entityModelTypeId = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default)
+        public DecisionModel(string modelType, string conditions, string ruleClass, Option<int?> id = default, Option<string?> description = default, Option<int?> decisionModelTypeId = default, Option<DateTime?> createdAt = default, Option<DateTime?> updatedAt = default)
         {
             ModelType = modelType;
             Conditions = conditions;
             RuleClass = ruleClass;
             IdOption = id;
             DescriptionOption = description;
-            EntityModelTypeIdOption = entityModelTypeId;
+            DecisionModelTypeIdOption = decisionModelTypeId;
             CreatedAtOption = createdAt;
             UpdatedAtOption = updatedAt;
             OnCreated();
@@ -112,19 +112,19 @@ namespace SafePeopleRegistryApiSdk.Model
         public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of EntityModelTypeId
+        /// Used to track the state of DecisionModelTypeId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<int?> EntityModelTypeIdOption { get; private set; }
+        public Option<int?> DecisionModelTypeIdOption { get; private set; }
 
         /// <summary>
-        /// ID of the entity model type associated with the decision
+        /// ID of the decision model type associated with the decision
         /// </summary>
-        /// <value>ID of the entity model type associated with the decision</value>
+        /// <value>ID of the decision model type associated with the decision</value>
         /* <example>42</example> */
-        [JsonPropertyName("entity_model_type_id")]
-        public int? EntityModelTypeId { get { return this.EntityModelTypeIdOption.Value; } set { this.EntityModelTypeIdOption = new(value); } }
+        [JsonPropertyName("decision_model_type_id")]
+        public int? DecisionModelTypeId { get { return this.DecisionModelTypeIdOption.Value; } set { this.DecisionModelTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedAt
@@ -169,7 +169,7 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  RuleClass: ").Append(RuleClass).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  EntityModelTypeId: ").Append(EntityModelTypeId).Append("\n");
+            sb.Append("  DecisionModelTypeId: ").Append(DecisionModelTypeId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -234,7 +234,7 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<string?> ruleClass = default;
             Option<int?> id = default;
             Option<string?> description = default;
-            Option<int?> entityModelTypeId = default;
+            Option<int?> decisionModelTypeId = default;
             Option<DateTime?> createdAt = default;
             Option<DateTime?> updatedAt = default;
 
@@ -268,8 +268,8 @@ namespace SafePeopleRegistryApiSdk.Model
                         case "description":
                             description = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "entity_model_type_id":
-                            entityModelTypeId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                        case "decision_model_type_id":
+                            decisionModelTypeId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "created_at":
                             createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
@@ -307,8 +307,8 @@ namespace SafePeopleRegistryApiSdk.Model
             if (description.IsSet && description.Value == null)
                 throw new ArgumentNullException(nameof(description), "Property is not nullable for class DecisionModel.");
 
-            if (entityModelTypeId.IsSet && entityModelTypeId.Value == null)
-                throw new ArgumentNullException(nameof(entityModelTypeId), "Property is not nullable for class DecisionModel.");
+            if (decisionModelTypeId.IsSet && decisionModelTypeId.Value == null)
+                throw new ArgumentNullException(nameof(decisionModelTypeId), "Property is not nullable for class DecisionModel.");
 
             if (createdAt.IsSet && createdAt.Value == null)
                 throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class DecisionModel.");
@@ -316,7 +316,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (updatedAt.IsSet && updatedAt.Value == null)
                 throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class DecisionModel.");
 
-            return new DecisionModel(modelType.Value!, conditions.Value!, ruleClass.Value!, id, description, entityModelTypeId, createdAt, updatedAt);
+            return new DecisionModel(modelType.Value!, conditions.Value!, ruleClass.Value!, id, description, decisionModelTypeId, createdAt, updatedAt);
         }
 
         /// <summary>
@@ -367,8 +367,8 @@ namespace SafePeopleRegistryApiSdk.Model
             if (decisionModel.DescriptionOption.IsSet)
                 writer.WriteString("description", decisionModel.Description);
 
-            if (decisionModel.EntityModelTypeIdOption.IsSet)
-                writer.WriteNumber("entity_model_type_id", decisionModel.EntityModelTypeIdOption.Value!.Value);
+            if (decisionModel.DecisionModelTypeIdOption.IsSet)
+                writer.WriteNumber("decision_model_type_id", decisionModel.DecisionModelTypeIdOption.Value!.Value);
 
             if (decisionModel.CreatedAtOption.IsSet)
                 writer.WriteString("created_at", decisionModel.CreatedAtOption.Value!.Value.ToString(CreatedAtFormat));

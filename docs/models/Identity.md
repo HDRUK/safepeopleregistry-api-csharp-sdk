@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **IdvtDocumentNumber** | **string** | Document number used for IDVT | [optional] 
 **IdvtDocumentCountry** | **string** | Country of the document used for IDVT | [optional] 
 **IdvtDocumentValidUntil** | **DateOnly** | Validity date of the document used for IDVT | [optional] 
+**IdvtDocumentFirstName** | **string** | First name on the document used for IDVT | [optional] 
+**IdvtDocumentValidLastName** | **string** | Last name on the document used for IDVT | [optional] 
 **IdvtAttemptId** | **string** | ID of the IDVT attempt | [optional] 
 **IdvtContextId** | **string** | Context ID for IDVT | [optional] 
 **IdvtDocumentDob** | **DateOnly** | Date of birth on the document used for IDVT | [optional] 
