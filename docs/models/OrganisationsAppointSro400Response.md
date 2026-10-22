@@ -1,4 +1,4 @@
-# SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response
+# SafePeopleRegistryApiSdk.Model.OrganisationsAppointSro400Response
 
 ## Properties
 

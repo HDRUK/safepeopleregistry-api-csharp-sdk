@@ -82,6 +82,13 @@ namespace SafePeopleRegistryApiSdk.Client
             _jsonOptions.Converters.Add(new OrganisationHasDepartmentJsonConverter());
             _jsonOptions.Converters.Add(new OrganisationHasFileJsonConverter());
             _jsonOptions.Converters.Add(new OrganisationHasSubsidiaryJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsAppointSro200ResponseJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsAppointSro400ResponseJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsAppointSro403ResponseJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsAppointSroRequestJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsInviteSro201ResponseJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsInviteSro409ResponseJsonConverter());
+            _jsonOptions.Converters.Add(new OrganisationsInviteSroRequestJsonConverter());
             _jsonOptions.Converters.Add(new PendingInviteJsonConverter());
             _jsonOptions.Converters.Add(new PermissionJsonConverter());
             _jsonOptions.Converters.Add(new ProfessionalRegistrationJsonConverter());
@@ -127,7 +134,6 @@ namespace SafePeopleRegistryApiSdk.Client
             _jsonOptions.Converters.Add(new ValidationLogJsonConverter());
             _jsonOptions.Converters.Add(new ValidationLogCommentJsonConverter());
             _jsonOptions.Converters.Add(new VendorWebhookReceiverReceive200ResponseJsonConverter());
-            _jsonOptions.Converters.Add(new VendorWebhookReceiverReceive400ResponseJsonConverter());
             _jsonOptions.Converters.Add(new VendorWebhookReceiverReceive500ResponseJsonConverter());
             _jsonOptions.Converters.Add(new WebhookEventTriggerJsonConverter());
             JsonSerializerOptionsProvider jsonSerializerOptionsProvider = new(_jsonOptions);
@@ -135,6 +141,7 @@ namespace SafePeopleRegistryApiSdk.Client
             _services.AddSingleton<IApiFactory, ApiFactory>();
             _services.AddSingleton<CustodianUserApiEvents>();
             _services.AddSingleton<FeatureApiEvents>();
+            _services.AddSingleton<OrganisationsApiEvents>();
             _services.AddSingleton<ProjectUsersApiEvents>();
             _services.AddSingleton<QueryApiEvents>();
             _services.AddSingleton<VendorWebhookReceiverApiEvents>();
@@ -185,6 +192,7 @@ namespace SafePeopleRegistryApiSdk.Client
 
             builders.Add(_services.AddHttpClient<ICustodianUserApi, CustodianUserApi>("SafePeopleRegistryApiSdk.Api.ICustodianUserApi", client));
             builders.Add(_services.AddHttpClient<IFeatureApi, FeatureApi>("SafePeopleRegistryApiSdk.Api.IFeatureApi", client));
+            builders.Add(_services.AddHttpClient<IOrganisationsApi, OrganisationsApi>("SafePeopleRegistryApiSdk.Api.IOrganisationsApi", client));
             builders.Add(_services.AddHttpClient<IProjectUsersApi, ProjectUsersApi>("SafePeopleRegistryApiSdk.Api.IProjectUsersApi", client));
             builders.Add(_services.AddHttpClient<IQueryApi, QueryApi>("SafePeopleRegistryApiSdk.Api.IQueryApi", client));
             builders.Add(_services.AddHttpClient<IVendorWebhookReceiverApi, VendorWebhookReceiverApi>("SafePeopleRegistryApiSdk.Api.IVendorWebhookReceiverApi", client));

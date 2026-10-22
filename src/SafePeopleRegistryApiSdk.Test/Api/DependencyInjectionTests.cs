@@ -72,6 +72,9 @@ namespace SafePeopleRegistryApiSdk.Test.Api
             var featureApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IFeatureApi>();
             Assert.True(featureApi.HttpClient.BaseAddress != null);
 
+            var organisationsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IOrganisationsApi>();
+            Assert.True(organisationsApi.HttpClient.BaseAddress != null);
+
             var projectUsersApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IProjectUsersApi>();
             Assert.True(projectUsersApi.HttpClient.BaseAddress != null);
 
@@ -93,6 +96,9 @@ namespace SafePeopleRegistryApiSdk.Test.Api
 
             var featureApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IFeatureApi>();
             Assert.True(featureApi.HttpClient.BaseAddress != null);
+
+            var organisationsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IOrganisationsApi>();
+            Assert.True(organisationsApi.HttpClient.BaseAddress != null);
 
             var projectUsersApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IProjectUsersApi>();
             Assert.True(projectUsersApi.HttpClient.BaseAddress != null);
@@ -116,6 +122,9 @@ namespace SafePeopleRegistryApiSdk.Test.Api
             var featureApi = _hostUsingAddWithAClient.Services.GetRequiredService<IFeatureApi>();
             Assert.True(featureApi.HttpClient.BaseAddress != null);
             
+            var organisationsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IOrganisationsApi>();
+            Assert.True(organisationsApi.HttpClient.BaseAddress != null);
+            
             var projectUsersApi = _hostUsingAddWithAClient.Services.GetRequiredService<IProjectUsersApi>();
             Assert.True(projectUsersApi.HttpClient.BaseAddress != null);
             
@@ -137,6 +146,9 @@ namespace SafePeopleRegistryApiSdk.Test.Api
 
             var featureApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IFeatureApi>();
             Assert.True(featureApi.HttpClient.BaseAddress != null);
+
+            var organisationsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IOrganisationsApi>();
+            Assert.True(organisationsApi.HttpClient.BaseAddress != null);
 
             var projectUsersApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IProjectUsersApi>();
             Assert.True(projectUsersApi.HttpClient.BaseAddress != null);

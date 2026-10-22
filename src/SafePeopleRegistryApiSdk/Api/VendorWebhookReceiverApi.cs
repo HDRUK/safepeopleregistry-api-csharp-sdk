@@ -67,7 +67,7 @@ namespace SafePeopleRegistryApiSdk.Api
     /// <summary>
     /// The <see cref="IVendorWebhookReceiverReceiveApiResponse"/>
     /// </summary>
-    public interface IVendorWebhookReceiverReceiveApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IOk<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive200Response?>, IBadRequest<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response?>, IInternalServerError<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response?>
+    public interface IVendorWebhookReceiverReceiveApiResponse : SafePeopleRegistryApiSdk.Client.IApiResponse, IOk<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive200Response?>, IBadRequest<SafePeopleRegistryApiSdk.Model.OrganisationsAppointSro400Response?>, IInternalServerError<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive500Response?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -411,11 +411,11 @@ namespace SafePeopleRegistryApiSdk.Api
             /// Deserializes the response if the response is 400 BadRequest
             /// </summary>
             /// <returns></returns>
-            public SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response? BadRequest()
+            public SafePeopleRegistryApiSdk.Model.OrganisationsAppointSro400Response? BadRequest()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<SafePeopleRegistryApiSdk.Model.OrganisationsAppointSro400Response>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -424,7 +424,7 @@ namespace SafePeopleRegistryApiSdk.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.VendorWebhookReceiverReceive400Response? result)
+            public bool TryBadRequest([NotNullWhen(true)]out SafePeopleRegistryApiSdk.Model.OrganisationsAppointSro400Response? result)
             {
                 result = null;
 

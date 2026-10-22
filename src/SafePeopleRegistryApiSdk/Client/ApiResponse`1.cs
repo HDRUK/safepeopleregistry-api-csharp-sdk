@@ -221,6 +221,46 @@ namespace SafePeopleRegistryApiSdk.Client
     /// An interface for responses of type 
     /// </summary>
     /// <typeparam name="TType"></typeparam>
+    public interface IConflict<TType> : IApiResponse
+    {
+        /// <summary>
+        /// Deserializes the response if the response is Conflict
+        /// </summary>
+        /// <returns></returns>
+        TType Conflict();
+
+        /// <summary>
+        /// Returns true if the response is Conflict and the deserialized response is not null
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryConflict([NotNullWhen(true)]out TType? result);
+    }
+
+    /// <summary>
+    /// An interface for responses of type 
+    /// </summary>
+    /// <typeparam name="TType"></typeparam>
+    public interface IForbidden<TType> : IApiResponse
+    {
+        /// <summary>
+        /// Deserializes the response if the response is Forbidden
+        /// </summary>
+        /// <returns></returns>
+        TType Forbidden();
+
+        /// <summary>
+        /// Returns true if the response is Forbidden and the deserialized response is not null
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryForbidden([NotNullWhen(true)]out TType? result);
+    }
+
+    /// <summary>
+    /// An interface for responses of type 
+    /// </summary>
+    /// <typeparam name="TType"></typeparam>
     public interface IUnauthorized<TType> : IApiResponse
     {
         /// <summary>

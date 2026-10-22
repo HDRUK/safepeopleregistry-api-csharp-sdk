@@ -26,16 +26,16 @@ using SafePeopleRegistryApiSdk.Client;
 namespace SafePeopleRegistryApiSdk.Model
 {
     /// <summary>
-    /// VendorWebhookReceiverReceive400Response
+    /// OrganisationsAppointSro400Response
     /// </summary>
-    public partial class VendorWebhookReceiverReceive400Response : IValidatableObject
+    public partial class OrganisationsAppointSro400Response : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VendorWebhookReceiverReceive400Response" /> class.
+        /// Initializes a new instance of the <see cref="OrganisationsAppointSro400Response" /> class.
         /// </summary>
         /// <param name="message">message</param>
         [JsonConstructor]
-        public VendorWebhookReceiverReceive400Response(Option<string?> message = default)
+        public OrganisationsAppointSro400Response(Option<string?> message = default)
         {
             MessageOption = message;
             OnCreated();
@@ -64,7 +64,7 @@ namespace SafePeopleRegistryApiSdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class VendorWebhookReceiverReceive400Response {\n");
+            sb.Append("class OrganisationsAppointSro400Response {\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -82,29 +82,29 @@ namespace SafePeopleRegistryApiSdk.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="VendorWebhookReceiverReceive400Response" />
+    /// A Json converter for type <see cref="OrganisationsAppointSro400Response" />
     /// </summary>
-    public partial class VendorWebhookReceiverReceive400ResponseJsonConverter : JsonConverter<VendorWebhookReceiverReceive400Response>
+    public partial class OrganisationsAppointSro400ResponseJsonConverter : JsonConverter<OrganisationsAppointSro400Response>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VendorWebhookReceiverReceive400ResponseJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="OrganisationsAppointSro400ResponseJsonConverter" /> class.
         /// </summary>
-        public VendorWebhookReceiverReceive400ResponseJsonConverter()
+        public OrganisationsAppointSro400ResponseJsonConverter()
         {
             OnCreated();
         }
 
         /// <summary>
-        /// Deserializes json to <see cref="VendorWebhookReceiverReceive400Response" />
+        /// Deserializes json to <see cref="OrganisationsAppointSro400Response" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override VendorWebhookReceiverReceive400Response Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override OrganisationsAppointSro400Response Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -140,40 +140,40 @@ namespace SafePeopleRegistryApiSdk.Model
             }
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class VendorWebhookReceiverReceive400Response.");
+                throw new ArgumentNullException(nameof(message), "Property is not nullable for class OrganisationsAppointSro400Response.");
 
-            return new VendorWebhookReceiverReceive400Response(message);
+            return new OrganisationsAppointSro400Response(message);
         }
 
         /// <summary>
-        /// Serializes a <see cref="VendorWebhookReceiverReceive400Response" />
+        /// Serializes a <see cref="OrganisationsAppointSro400Response" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="vendorWebhookReceiverReceive400Response"></param>
+        /// <param name="organisationsAppointSro400Response"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, VendorWebhookReceiverReceive400Response vendorWebhookReceiverReceive400Response, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, OrganisationsAppointSro400Response organisationsAppointSro400Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, vendorWebhookReceiverReceive400Response, jsonSerializerOptions);
+            WriteProperties(writer, organisationsAppointSro400Response, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="VendorWebhookReceiverReceive400Response" />
+        /// Serializes the properties of <see cref="OrganisationsAppointSro400Response" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="vendorWebhookReceiverReceive400Response"></param>
+        /// <param name="organisationsAppointSro400Response"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, VendorWebhookReceiverReceive400Response vendorWebhookReceiverReceive400Response, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, OrganisationsAppointSro400Response organisationsAppointSro400Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (vendorWebhookReceiverReceive400Response.MessageOption.IsSet && vendorWebhookReceiverReceive400Response.Message == null)
-                throw new ArgumentNullException(nameof(vendorWebhookReceiverReceive400Response.Message), "Property is required for class VendorWebhookReceiverReceive400Response.");
+            if (organisationsAppointSro400Response.MessageOption.IsSet && organisationsAppointSro400Response.Message == null)
+                throw new ArgumentNullException(nameof(organisationsAppointSro400Response.Message), "Property is required for class OrganisationsAppointSro400Response.");
 
-            if (vendorWebhookReceiverReceive400Response.MessageOption.IsSet)
-                writer.WriteString("message", vendorWebhookReceiverReceive400Response.Message);
+            if (organisationsAppointSro400Response.MessageOption.IsSet)
+                writer.WriteString("message", organisationsAppointSro400Response.Message);
         }
     }
 }
