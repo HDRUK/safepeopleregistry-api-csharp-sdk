@@ -112,6 +112,8 @@ namespace SafePeopleRegistryApiSdk.Client
                 return boolean
                     ? "true"
                     : "false";
+            if (obj is Affiliation.EndDateSourceEnum affiliationEndDateSourceEnum)
+                return Affiliation.EndDateSourceEnumToJsonValue(affiliationEndDateSourceEnum);
             if (obj is CustodianUserBulkStoreRequestUsersInner.PermissionEnum custodianUserBulkStoreRequestUsersInnerPermissionEnum)
                 return CustodianUserBulkStoreRequestUsersInner.PermissionEnumToJsonValue(custodianUserBulkStoreRequestUsersInnerPermissionEnum);
             if (obj is ProjectDetail.RequestFrequencyEnum projectDetailRequestFrequencyEnum)

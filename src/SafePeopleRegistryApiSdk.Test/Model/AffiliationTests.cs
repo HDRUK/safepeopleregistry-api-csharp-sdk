@@ -126,6 +126,42 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'EndDateRecordedAt'
+        /// </summary>
+        [Fact]
+        public void EndDateRecordedAtTest()
+        {
+            // TODO unit test for the property 'EndDateRecordedAt'
+        }
+
+        /// <summary>
+        /// Test the property 'EndDateRecordedBy'
+        /// </summary>
+        [Fact]
+        public void EndDateRecordedByTest()
+        {
+            // TODO unit test for the property 'EndDateRecordedBy'
+        }
+
+        /// <summary>
+        /// Test the property 'EndDateSource'
+        /// </summary>
+        [Fact]
+        public void EndDateSourceTest()
+        {
+            // TODO unit test for the property 'EndDateSource'
+        }
+
+        /// <summary>
+        /// Test the property 'LeftAt'
+        /// </summary>
+        [Fact]
+        public void LeftAtTest()
+        {
+            // TODO unit test for the property 'LeftAt'
+        }
+
+        /// <summary>
         /// Test the property 'Department'
         /// </summary>
         [Fact]

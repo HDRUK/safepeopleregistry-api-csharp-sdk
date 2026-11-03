@@ -81,6 +81,15 @@ namespace SafePeopleRegistryApiSdk.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'StatusChangedAt'
+        /// </summary>
+        [Fact]
+        public void StatusChangedAtTest()
+        {
+            // TODO unit test for the property 'StatusChangedAt'
+        }
+
+        /// <summary>
         /// Test the property 'OrganisationName'
         /// </summary>
         [Fact]

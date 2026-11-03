@@ -36,6 +36,7 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="id">Model primary key</param>
         /// <param name="createdAt">createdAt</param>
         /// <param name="updatedAt">updatedAt</param>
+        /// <param name="statusChangedAt">When the organisation&#39;s status last changed. Only returned by the organisations index.</param>
         /// <param name="organisationName">organisationName</param>
         /// <param name="address1">address1</param>
         /// <param name="address2">address2</param>
@@ -83,11 +84,12 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="icoDateRegistered">icoDateRegistered</param>
         /// <param name="icoExpiryDate">icoExpiryDate</param>
         [JsonConstructor]
-        public Organisation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> organisationName = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<string?> leadApplicantOrganisationName = default, Option<string?> leadApplicantEmail = default, Option<string?> organisationUniqueId = default, Option<string?> applicantNames = default, Option<string?> fundersAndSponsors = default, Option<string?> subLicenseArrangements = default, Option<bool?> verified = default, Option<string?> dsptkOdsCode = default, Option<bool?> dsptkCertified = default, Option<string?> dsptkExpiryDate = default, Option<bool?> iso27001Certified = default, Option<string?> iso27001CertificationNum = default, Option<string?> isoExpiryDate = default, Option<bool?> ceCertified = default, Option<string?> ceCertificationNum = default, Option<string?> ceExpiryDate = default, Option<bool?> cePlusCertified = default, Option<string?> cePlusCertificationNum = default, Option<string?> cePlusExpiryDate = default, Option<bool?> ceOrIsoCertified = default, Option<bool?> cePlusOrIsoCertified = default, Option<int?> idvtResult = default, Option<int?> idvtResultPerc = default, Option<string?> idvtErrors = default, Option<string?> idvtCompletedAt = default, Option<string?> companiesHouseNo = default, Option<int?> sectorId = default, Option<string?> rorId = default, Option<string?> website = default, Option<bool?> smbStatus = default, Option<int?> organisationSize = default, Option<bool?> unclaimed = default, Option<bool?> systemApproved = default, Option<string?> odsId = default, Option<string?> dsptkStatus = default, Option<string?> dsptkDateLastPublished = default, Option<string?> icoRegistrationId = default, Option<string?> icoDateRegistered = default, Option<string?> icoExpiryDate = default)
+        public Organisation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<string?> statusChangedAt = default, Option<string?> organisationName = default, Option<string?> address1 = default, Option<string?> address2 = default, Option<string?> town = default, Option<string?> county = default, Option<string?> country = default, Option<string?> postcode = default, Option<string?> leadApplicantOrganisationName = default, Option<string?> leadApplicantEmail = default, Option<string?> organisationUniqueId = default, Option<string?> applicantNames = default, Option<string?> fundersAndSponsors = default, Option<string?> subLicenseArrangements = default, Option<bool?> verified = default, Option<string?> dsptkOdsCode = default, Option<bool?> dsptkCertified = default, Option<string?> dsptkExpiryDate = default, Option<bool?> iso27001Certified = default, Option<string?> iso27001CertificationNum = default, Option<string?> isoExpiryDate = default, Option<bool?> ceCertified = default, Option<string?> ceCertificationNum = default, Option<string?> ceExpiryDate = default, Option<bool?> cePlusCertified = default, Option<string?> cePlusCertificationNum = default, Option<string?> cePlusExpiryDate = default, Option<bool?> ceOrIsoCertified = default, Option<bool?> cePlusOrIsoCertified = default, Option<int?> idvtResult = default, Option<int?> idvtResultPerc = default, Option<string?> idvtErrors = default, Option<string?> idvtCompletedAt = default, Option<string?> companiesHouseNo = default, Option<int?> sectorId = default, Option<string?> rorId = default, Option<string?> website = default, Option<bool?> smbStatus = default, Option<int?> organisationSize = default, Option<bool?> unclaimed = default, Option<bool?> systemApproved = default, Option<string?> odsId = default, Option<string?> dsptkStatus = default, Option<string?> dsptkDateLastPublished = default, Option<string?> icoRegistrationId = default, Option<string?> icoDateRegistered = default, Option<string?> icoExpiryDate = default)
         {
             IdOption = id;
             CreatedAtOption = createdAt;
             UpdatedAtOption = updatedAt;
+            StatusChangedAtOption = statusChangedAt;
             OrganisationNameOption = organisationName;
             Address1Option = address1;
             Address2Option = address2;
@@ -181,6 +183,21 @@ namespace SafePeopleRegistryApiSdk.Model
         /* <example>2023-10-10T16:03:00Z</example> */
         [JsonPropertyName("updated_at")]
         public string? UpdatedAt { get { return this.UpdatedAtOption.Value; } set { this.UpdatedAtOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StatusChangedAt
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StatusChangedAtOption { get; private set; }
+
+        /// <summary>
+        /// When the organisation&#39;s status last changed. Only returned by the organisations index.
+        /// </summary>
+        /// <value>When the organisation&#39;s status last changed. Only returned by the organisations index.</value>
+        /* <example>2023-10-11T09:00:00Z</example> */
+        [JsonPropertyName("status_changed_at")]
+        public string? StatusChangedAt { get { return this.StatusChangedAtOption.Value; } set { this.StatusChangedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganisationName
@@ -844,6 +861,7 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  StatusChangedAt: ").Append(StatusChangedAt).Append("\n");
             sb.Append("  OrganisationName: ").Append(OrganisationName).Append("\n");
             sb.Append("  Address1: ").Append(Address1).Append("\n");
             sb.Append("  Address2: ").Append(Address2).Append("\n");
@@ -940,6 +958,7 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<int?> id = default;
             Option<string?> createdAt = default;
             Option<string?> updatedAt = default;
+            Option<string?> statusChangedAt = default;
             Option<string?> organisationName = default;
             Option<string?> address1 = default;
             Option<string?> address2 = default;
@@ -1010,6 +1029,9 @@ namespace SafePeopleRegistryApiSdk.Model
                             break;
                         case "updated_at":
                             updatedAt = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "status_changed_at":
+                            statusChangedAt = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "organisation_name":
                             organisationName = new Option<string?>(utf8JsonReader.GetString()!);
@@ -1164,6 +1186,9 @@ namespace SafePeopleRegistryApiSdk.Model
             if (updatedAt.IsSet && updatedAt.Value == null)
                 throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class Organisation.");
 
+            if (statusChangedAt.IsSet && statusChangedAt.Value == null)
+                throw new ArgumentNullException(nameof(statusChangedAt), "Property is not nullable for class Organisation.");
+
             if (organisationName.IsSet && organisationName.Value == null)
                 throw new ArgumentNullException(nameof(organisationName), "Property is not nullable for class Organisation.");
 
@@ -1302,7 +1327,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (icoExpiryDate.IsSet && icoExpiryDate.Value == null)
                 throw new ArgumentNullException(nameof(icoExpiryDate), "Property is not nullable for class Organisation.");
 
-            return new Organisation(id, createdAt, updatedAt, organisationName, address1, address2, town, county, country, postcode, leadApplicantOrganisationName, leadApplicantEmail, organisationUniqueId, applicantNames, fundersAndSponsors, subLicenseArrangements, verified, dsptkOdsCode, dsptkCertified, dsptkExpiryDate, iso27001Certified, iso27001CertificationNum, isoExpiryDate, ceCertified, ceCertificationNum, ceExpiryDate, cePlusCertified, cePlusCertificationNum, cePlusExpiryDate, ceOrIsoCertified, cePlusOrIsoCertified, idvtResult, idvtResultPerc, idvtErrors, idvtCompletedAt, companiesHouseNo, sectorId, rorId, website, smbStatus, organisationSize, unclaimed, systemApproved, odsId, dsptkStatus, dsptkDateLastPublished, icoRegistrationId, icoDateRegistered, icoExpiryDate);
+            return new Organisation(id, createdAt, updatedAt, statusChangedAt, organisationName, address1, address2, town, county, country, postcode, leadApplicantOrganisationName, leadApplicantEmail, organisationUniqueId, applicantNames, fundersAndSponsors, subLicenseArrangements, verified, dsptkOdsCode, dsptkCertified, dsptkExpiryDate, iso27001Certified, iso27001CertificationNum, isoExpiryDate, ceCertified, ceCertificationNum, ceExpiryDate, cePlusCertified, cePlusCertificationNum, cePlusExpiryDate, ceOrIsoCertified, cePlusOrIsoCertified, idvtResult, idvtResultPerc, idvtErrors, idvtCompletedAt, companiesHouseNo, sectorId, rorId, website, smbStatus, organisationSize, unclaimed, systemApproved, odsId, dsptkStatus, dsptkDateLastPublished, icoRegistrationId, icoDateRegistered, icoExpiryDate);
         }
 
         /// <summary>
@@ -1334,6 +1359,9 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (organisation.UpdatedAtOption.IsSet && organisation.UpdatedAt == null)
                 throw new ArgumentNullException(nameof(organisation.UpdatedAt), "Property is required for class Organisation.");
+
+            if (organisation.StatusChangedAtOption.IsSet && organisation.StatusChangedAt == null)
+                throw new ArgumentNullException(nameof(organisation.StatusChangedAt), "Property is required for class Organisation.");
 
             if (organisation.OrganisationNameOption.IsSet && organisation.OrganisationName == null)
                 throw new ArgumentNullException(nameof(organisation.OrganisationName), "Property is required for class Organisation.");
@@ -1439,6 +1467,9 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (organisation.UpdatedAtOption.IsSet)
                 writer.WriteString("updated_at", organisation.UpdatedAt);
+
+            if (organisation.StatusChangedAtOption.IsSet)
+                writer.WriteString("status_changed_at", organisation.StatusChangedAt);
 
             if (organisation.OrganisationNameOption.IsSet)
                 writer.WriteString("organisation_name", organisation.OrganisationName);

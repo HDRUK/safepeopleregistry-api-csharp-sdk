@@ -40,7 +40,11 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="memberId">Member ID UUID</param>
         /// <param name="relationship">Textual representation of affiliation relationship</param>
         /// <param name="from">Date affiliation commenced</param>
-        /// <param name="to">Date affiliation concluded</param>
+        /// <param name="to">Date affiliation ends (or ended). Null when there is no known end date</param>
+        /// <param name="endDateRecordedAt">When the end date was recorded</param>
+        /// <param name="endDateRecordedBy">The user who recorded the end date</param>
+        /// <param name="endDateSource">Who recorded the end date. The organisation&#39;s date wins over the user&#39;s</param>
+        /// <param name="leftAt">When the leaver flow ran for this affiliation</param>
         /// <param name="department">Department worked during affiliation</param>
         /// <param name="role">Role held during affiliation</param>
         /// <param name="email">Professional email held during affiliation</param>
@@ -52,7 +56,7 @@ namespace SafePeopleRegistryApiSdk.Model
         /// <param name="verificationConfirmedAt">Timestamp when verification was confirmed</param>
         /// <param name="isVerified">Flag indicating if affiliation is verified</param>
         [JsonConstructor]
-        public Affiliation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<int?> organisationId = default, Option<string?> memberId = default, Option<string?> relationship = default, Option<string?> from = default, Option<string?> to = default, Option<string?> department = default, Option<string?> role = default, Option<string?> email = default, Option<string?> ror = default, Option<int?> registryId = default, Option<bool?> currentEmployer = default, Option<string?> verificationCode = default, Option<DateTime?> verificationSentAt = default, Option<DateTime?> verificationConfirmedAt = default, Option<bool?> isVerified = default)
+        public Affiliation(Option<int?> id = default, Option<string?> createdAt = default, Option<string?> updatedAt = default, Option<int?> organisationId = default, Option<string?> memberId = default, Option<string?> relationship = default, Option<DateOnly?> from = default, Option<DateOnly?> to = default, Option<DateTime?> endDateRecordedAt = default, Option<int?> endDateRecordedBy = default, Option<EndDateSourceEnum?> endDateSource = default, Option<DateTime?> leftAt = default, Option<string?> department = default, Option<string?> role = default, Option<string?> email = default, Option<string?> ror = default, Option<int?> registryId = default, Option<bool?> currentEmployer = default, Option<string?> verificationCode = default, Option<DateTime?> verificationSentAt = default, Option<DateTime?> verificationConfirmedAt = default, Option<bool?> isVerified = default)
         {
             IdOption = id;
             CreatedAtOption = createdAt;
@@ -62,6 +66,10 @@ namespace SafePeopleRegistryApiSdk.Model
             RelationshipOption = relationship;
             FromOption = from;
             ToOption = to;
+            EndDateRecordedAtOption = endDateRecordedAt;
+            EndDateRecordedByOption = endDateRecordedBy;
+            EndDateSourceOption = endDateSource;
+            LeftAtOption = leftAt;
             DepartmentOption = department;
             RoleOption = role;
             EmailOption = email;
@@ -76,6 +84,90 @@ namespace SafePeopleRegistryApiSdk.Model
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Who recorded the end date. The organisation&#39;s date wins over the user&#39;s
+        /// </summary>
+        /// <value>Who recorded the end date. The organisation&#39;s date wins over the user&#39;s</value>
+        public enum EndDateSourceEnum
+        {
+            /// <summary>
+            /// Enum User for value: user
+            /// </summary>
+            User = 1,
+
+            /// <summary>
+            /// Enum Organisation for value: organisation
+            /// </summary>
+            Organisation = 2
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EndDateSourceEnum"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static EndDateSourceEnum EndDateSourceEnumFromString(string value)
+        {
+            if (value.Equals("user"))
+                return EndDateSourceEnum.User;
+
+            if (value.Equals("organisation"))
+                return EndDateSourceEnum.Organisation;
+
+            throw new NotImplementedException($"Could not convert value to type EndDateSourceEnum: '{value}'");
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EndDateSourceEnum"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static EndDateSourceEnum? EndDateSourceEnumFromStringOrDefault(string value)
+        {
+            if (value.Equals("user"))
+                return EndDateSourceEnum.User;
+
+            if (value.Equals("organisation"))
+                return EndDateSourceEnum.Organisation;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Converts the <see cref="EndDateSourceEnum"/> to the json value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static string? EndDateSourceEnumToJsonValue(EndDateSourceEnum? value)
+        {
+            if (value == null)
+                return null;
+
+            if (value == EndDateSourceEnum.User)
+                return "user";
+
+            if (value == EndDateSourceEnum.Organisation)
+                return "organisation";
+
+            throw new NotImplementedException($"Value could not be handled: '{value}'");
+        }
+
+        /// <summary>
+        /// Used to track the state of EndDateSource
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<EndDateSourceEnum?> EndDateSourceOption { get; private set; }
+
+        /// <summary>
+        /// Who recorded the end date. The organisation&#39;s date wins over the user&#39;s
+        /// </summary>
+        /// <value>Who recorded the end date. The organisation&#39;s date wins over the user&#39;s</value>
+        [JsonPropertyName("end_date_source")]
+        public EndDateSourceEnum? EndDateSource { get { return this.EndDateSourceOption.Value; } set { this.EndDateSourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -170,30 +262,72 @@ namespace SafePeopleRegistryApiSdk.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> FromOption { get; private set; }
+        public Option<DateOnly?> FromOption { get; private set; }
 
         /// <summary>
         /// Date affiliation commenced
         /// </summary>
         /// <value>Date affiliation commenced</value>
-        /* <example>2023-01-12</example> */
+        /* <example>Thu Jan 12 00:00:00 UTC 2023</example> */
         [JsonPropertyName("from")]
-        public string? From { get { return this.FromOption.Value; } set { this.FromOption = new(value); } }
+        public DateOnly? From { get { return this.FromOption.Value; } set { this.FromOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of To
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ToOption { get; private set; }
+        public Option<DateOnly?> ToOption { get; private set; }
 
         /// <summary>
-        /// Date affiliation concluded
+        /// Date affiliation ends (or ended). Null when there is no known end date
         /// </summary>
-        /// <value>Date affiliation concluded</value>
-        /* <example>2024-12-01</example> */
+        /// <value>Date affiliation ends (or ended). Null when there is no known end date</value>
+        /* <example>Sun Dec 01 00:00:00 UTC 2024</example> */
         [JsonPropertyName("to")]
-        public string? To { get { return this.ToOption.Value; } set { this.ToOption = new(value); } }
+        public DateOnly? To { get { return this.ToOption.Value; } set { this.ToOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of EndDateRecordedAt
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<DateTime?> EndDateRecordedAtOption { get; private set; }
+
+        /// <summary>
+        /// When the end date was recorded
+        /// </summary>
+        /// <value>When the end date was recorded</value>
+        [JsonPropertyName("end_date_recorded_at")]
+        public DateTime? EndDateRecordedAt { get { return this.EndDateRecordedAtOption.Value; } set { this.EndDateRecordedAtOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of EndDateRecordedBy
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<int?> EndDateRecordedByOption { get; private set; }
+
+        /// <summary>
+        /// The user who recorded the end date
+        /// </summary>
+        /// <value>The user who recorded the end date</value>
+        [JsonPropertyName("end_date_recorded_by")]
+        public int? EndDateRecordedBy { get { return this.EndDateRecordedByOption.Value; } set { this.EndDateRecordedByOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of LeftAt
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<DateTime?> LeftAtOption { get; private set; }
+
+        /// <summary>
+        /// When the leaver flow ran for this affiliation
+        /// </summary>
+        /// <value>When the leaver flow ran for this affiliation</value>
+        [JsonPropertyName("left_at")]
+        public DateTime? LeftAt { get { return this.LeftAtOption.Value; } set { this.LeftAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Department
@@ -361,6 +495,10 @@ namespace SafePeopleRegistryApiSdk.Model
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("  From: ").Append(From).Append("\n");
             sb.Append("  To: ").Append(To).Append("\n");
+            sb.Append("  EndDateRecordedAt: ").Append(EndDateRecordedAt).Append("\n");
+            sb.Append("  EndDateRecordedBy: ").Append(EndDateRecordedBy).Append("\n");
+            sb.Append("  EndDateSource: ").Append(EndDateSource).Append("\n");
+            sb.Append("  LeftAt: ").Append(LeftAt).Append("\n");
             sb.Append("  Department: ").Append(Department).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -402,6 +540,26 @@ namespace SafePeopleRegistryApiSdk.Model
         }
 
         /// <summary>
+        /// The format to use to serialize From
+        /// </summary>
+        public string FromFormat { get; private set; } = "yyyy'-'MM'-'dd";
+
+        /// <summary>
+        /// The format to use to serialize To
+        /// </summary>
+        public string ToFormat { get; private set; } = "yyyy'-'MM'-'dd";
+
+        /// <summary>
+        /// The format to use to serialize EndDateRecordedAt
+        /// </summary>
+        public string EndDateRecordedAtFormat { get; private set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
+
+        /// <summary>
+        /// The format to use to serialize LeftAt
+        /// </summary>
+        public string LeftAtFormat { get; private set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
+
+        /// <summary>
         /// The format to use to serialize VerificationSentAt
         /// </summary>
         public string VerificationSentAtFormat { get; private set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
@@ -434,8 +592,12 @@ namespace SafePeopleRegistryApiSdk.Model
             Option<int?> organisationId = default;
             Option<string?> memberId = default;
             Option<string?> relationship = default;
-            Option<string?> from = default;
-            Option<string?> to = default;
+            Option<DateOnly?> from = default;
+            Option<DateOnly?> to = default;
+            Option<DateTime?> endDateRecordedAt = default;
+            Option<int?> endDateRecordedBy = default;
+            Option<Affiliation.EndDateSourceEnum?> endDateSource = default;
+            Option<DateTime?> leftAt = default;
             Option<string?> department = default;
             Option<string?> role = default;
             Option<string?> email = default;
@@ -481,10 +643,23 @@ namespace SafePeopleRegistryApiSdk.Model
                             relationship = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "from":
-                            from = new Option<string?>(utf8JsonReader.GetString()!);
+                            from = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "to":
-                            to = new Option<string?>(utf8JsonReader.GetString()!);
+                            to = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "end_date_recorded_at":
+                            endDateRecordedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "end_date_recorded_by":
+                            endDateRecordedBy = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            break;
+                        case "end_date_source":
+                            string? endDateSourceRawValue = utf8JsonReader.GetString();
+                            endDateSource = new Option<Affiliation.EndDateSourceEnum?>(endDateSourceRawValue == null ? null : Affiliation.EndDateSourceEnumFromStringOrDefault(endDateSourceRawValue));
+                            break;
+                        case "left_at":
+                            leftAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "department":
                             department = new Option<string?>(utf8JsonReader.GetString()!);
@@ -543,9 +718,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (from.IsSet && from.Value == null)
                 throw new ArgumentNullException(nameof(from), "Property is not nullable for class Affiliation.");
 
-            if (to.IsSet && to.Value == null)
-                throw new ArgumentNullException(nameof(to), "Property is not nullable for class Affiliation.");
-
             if (department.IsSet && department.Value == null)
                 throw new ArgumentNullException(nameof(department), "Property is not nullable for class Affiliation.");
 
@@ -576,7 +748,7 @@ namespace SafePeopleRegistryApiSdk.Model
             if (isVerified.IsSet && isVerified.Value == null)
                 throw new ArgumentNullException(nameof(isVerified), "Property is not nullable for class Affiliation.");
 
-            return new Affiliation(id, createdAt, updatedAt, organisationId, memberId, relationship, from, to, department, role, email, ror, registryId, currentEmployer, verificationCode, verificationSentAt, verificationConfirmedAt, isVerified);
+            return new Affiliation(id, createdAt, updatedAt, organisationId, memberId, relationship, from, to, endDateRecordedAt, endDateRecordedBy, endDateSource, leftAt, department, role, email, ror, registryId, currentEmployer, verificationCode, verificationSentAt, verificationConfirmedAt, isVerified);
         }
 
         /// <summary>
@@ -615,12 +787,6 @@ namespace SafePeopleRegistryApiSdk.Model
             if (affiliation.RelationshipOption.IsSet && affiliation.Relationship == null)
                 throw new ArgumentNullException(nameof(affiliation.Relationship), "Property is required for class Affiliation.");
 
-            if (affiliation.FromOption.IsSet && affiliation.From == null)
-                throw new ArgumentNullException(nameof(affiliation.From), "Property is required for class Affiliation.");
-
-            if (affiliation.ToOption.IsSet && affiliation.To == null)
-                throw new ArgumentNullException(nameof(affiliation.To), "Property is required for class Affiliation.");
-
             if (affiliation.DepartmentOption.IsSet && affiliation.Department == null)
                 throw new ArgumentNullException(nameof(affiliation.Department), "Property is required for class Affiliation.");
 
@@ -655,10 +821,37 @@ namespace SafePeopleRegistryApiSdk.Model
                 writer.WriteString("relationship", affiliation.Relationship);
 
             if (affiliation.FromOption.IsSet)
-                writer.WriteString("from", affiliation.From);
+                writer.WriteString("from", affiliation.FromOption.Value!.Value.ToString(FromFormat));
 
             if (affiliation.ToOption.IsSet)
-                writer.WriteString("to", affiliation.To);
+                if (affiliation.ToOption.Value != null)
+                    writer.WriteString("to", affiliation.ToOption.Value!.Value.ToString(ToFormat));
+                else
+                    writer.WriteNull("to");
+
+            if (affiliation.EndDateRecordedAtOption.IsSet)
+                if (affiliation.EndDateRecordedAtOption.Value != null)
+                    writer.WriteString("end_date_recorded_at", affiliation.EndDateRecordedAtOption.Value!.Value.ToString(EndDateRecordedAtFormat));
+                else
+                    writer.WriteNull("end_date_recorded_at");
+
+            if (affiliation.EndDateRecordedByOption.IsSet)
+                if (affiliation.EndDateRecordedByOption.Value != null)
+                    writer.WriteNumber("end_date_recorded_by", affiliation.EndDateRecordedByOption.Value!.Value);
+                else
+                    writer.WriteNull("end_date_recorded_by");
+
+            var endDateSourceRawValue = Affiliation.EndDateSourceEnumToJsonValue(affiliation.EndDateSourceOption.Value!.Value);
+            if (endDateSourceRawValue != null)
+                writer.WriteString("end_date_source", endDateSourceRawValue);
+            else
+                writer.WriteNull("end_date_source");
+
+            if (affiliation.LeftAtOption.IsSet)
+                if (affiliation.LeftAtOption.Value != null)
+                    writer.WriteString("left_at", affiliation.LeftAtOption.Value!.Value.ToString(LeftAtFormat));
+                else
+                    writer.WriteNull("left_at");
 
             if (affiliation.DepartmentOption.IsSet)
                 writer.WriteString("department", affiliation.Department);

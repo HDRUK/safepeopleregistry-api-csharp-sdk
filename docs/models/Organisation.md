@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Id** | **int** | Model primary key | [optional] 
 **CreatedAt** | **string** |  | [optional] 
 **UpdatedAt** | **string** |  | [optional] 
+**StatusChangedAt** | **string** | When the organisation&#39;s status last changed. Only returned by the organisations index. | [optional] 
 **OrganisationName** | **string** |  | [optional] 
 **Address1** | **string** |  | [optional] 
 **Address2** | **string** |  | [optional] 
