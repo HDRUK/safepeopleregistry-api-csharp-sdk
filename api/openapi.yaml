@@ -2790,6 +2790,7 @@ components:
           enum:
           - CUSTODIAN_ADMIN
           - CUSTODIAN_APPROVER
+          - CUSTODIAN_READ_ONLY
           example: CUSTODIAN_ADMIN
           type: string
       type: object

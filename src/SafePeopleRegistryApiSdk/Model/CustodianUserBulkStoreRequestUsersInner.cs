@@ -62,7 +62,12 @@ namespace SafePeopleRegistryApiSdk.Model
             /// <summary>
             /// Enum CUSTODIANAPPROVER for value: CUSTODIAN_APPROVER
             /// </summary>
-            CUSTODIANAPPROVER = 2
+            CUSTODIANAPPROVER = 2,
+
+            /// <summary>
+            /// Enum CUSTODIANREADONLY for value: CUSTODIAN_READ_ONLY
+            /// </summary>
+            CUSTODIANREADONLY = 3
         }
 
         /// <summary>
@@ -78,6 +83,9 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (value.Equals("CUSTODIAN_APPROVER"))
                 return PermissionEnum.CUSTODIANAPPROVER;
+
+            if (value.Equals("CUSTODIAN_READ_ONLY"))
+                return PermissionEnum.CUSTODIANREADONLY;
 
             throw new NotImplementedException($"Could not convert value to type PermissionEnum: '{value}'");
         }
@@ -95,6 +103,9 @@ namespace SafePeopleRegistryApiSdk.Model
             if (value.Equals("CUSTODIAN_APPROVER"))
                 return PermissionEnum.CUSTODIANAPPROVER;
 
+            if (value.Equals("CUSTODIAN_READ_ONLY"))
+                return PermissionEnum.CUSTODIANREADONLY;
+
             return null;
         }
 
@@ -111,6 +122,9 @@ namespace SafePeopleRegistryApiSdk.Model
 
             if (value == PermissionEnum.CUSTODIANAPPROVER)
                 return "CUSTODIAN_APPROVER";
+
+            if (value == PermissionEnum.CUSTODIANREADONLY)
+                return "CUSTODIAN_READ_ONLY";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }
